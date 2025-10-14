@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Zara Louise | Data Analyst</title>
+  <title>Zara Louise Luz | Data Analyst</title>
   <meta name="description" content="Portfolio of Zara Louise – Data Analytics & Data Science" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Bebas+Neue&display=swap" rel="stylesheet">
@@ -53,8 +53,8 @@
     .btn.primary{background:#efe7fb;border-color:transparent}
 
     /* Photo only circle (no rectangle) */
-    .photo-wrap{display:flex;align-items:center;justify-content:center}
-    .avatar{width:min(420px,38vw);aspect-ratio:1;border-radius:50%;object-fit:cover;border:10px solid #ffffff;box-shadow:0 30px 70px rgba(0,0,0,.15)}
+    .photo-wrap{display:flex;align-items:center;justify-content:center;position:relative}
+    .avatar{width:min(520px,48vw);aspect-ratio:1;border-radius:50%;object-fit:cover;border:12px solid #ffffff;box-shadow:0 40px 90px rgba(0,0,0,.18), 0 0 80px rgba(185,167,209,.35);will-change:transform;animation: gentleZoom .7s ease-out both, breathe 8s ease-in-out 1.2s infinite}
 
     /* ====== Sections ====== */
     section{padding:46px 0}
@@ -87,6 +87,7 @@
       .grid{grid-template-columns:1fr}
       .name{font-size:48px}
     }
+  @keyframes gentleZoom{0%{opacity:.0;transform:scale(.96)}100%{opacity:1;transform:scale(1)}}@keyframes breathe{0%{transform:scale(1)}50%{transform:scale(1.01)}100%{transform:scale(1)}}.hero .name,.hero .subtitle,.cta{animation:reveal .6s ease-out both}.hero .subtitle{animation-delay:.06s}.cta{animation-delay:.12s}@keyframes reveal{from{opacity:0;transform:translateY(10px)}to{opacity:1;transform:none}}
   </style>
 </head>
 <body>
@@ -112,7 +113,7 @@
     <!-- ====== Hero ====== -->
     <section class="hero" aria-label="Intro">
       <div>
-        <h1 class="name">Zara Louise</h1>
+        <h1 class="name">Zara Louise Luz</h1>
         <p class="subtitle"><strong>Turning data into clear, actionable insights.</strong> Business Administration background → BI & DS. I build dashboards, automate data flows, and design data models that support smart decisions.</p>
         <div class="cta">
           <a class="btn primary" href="#projects">View Projects</a>
@@ -121,7 +122,7 @@
       </div>
       <div class="photo-wrap">
         <!-- NOTE: if your image is images/zaraj.jpg keep as below; change to zara.jpg if needed -->
-        <img class="avatar" src="images/zara.jpg" alt="Portrait of Zara Louise" />
+        <img class="avatar" src="zara.png" alt="Portrait of Zara Louise Luz" />
       </div>
     </section>
 
