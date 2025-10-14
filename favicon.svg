@@ -1,0 +1,11 @@
+<!-- favicon.svg  (Brasil) -->
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64">
+  <!-- fundo verde -->
+  <rect width="64" height="64" fill="#229E45"/>
+  <!-- losango amarelo -->
+  <polygon points="32,6 58,32 32,58 6,32" fill="#F7CC0A"/>
+  <!-- círculo azul -->
+  <circle cx="32" cy="32" r="13" fill="#05259E"/>
+  <!-- faixa branca (arco) -->
+  <path d="M19 32a13 13 0 0 1 26 0c-8-4-18-4-26 0Z" fill="#fff" opacity=".95"/>
+</svg>
