@@ -1,300 +1,295 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
 <head>
-  <!-- Favicon: Brazil flag (inline SVG as data URL) -->
-  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml;utf8,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' fill='%23229E45'/%3E%3Cpolygon points='32,6 58,32 32,58 6,32' fill='%23F7CC0A'/%3E%3Ccircle cx='32' cy='32' r='13' fill='%2305259E'/%3E%3Cpath d='M19 32a13 13 0 0 1 26 0c-8-4-18-4-26 0Z' fill='%23fff' opacity='.95'/%3E%3C/svg%3E" />
-  <meta name="theme-color" content="#4B1C1C" />
-
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Zara Louise Luz | Data Analyst</title>
-  <meta name="description" content="Portfolio of Zara Louise – Data Analytics & Data Science" />
+  <title>Zara Louise Luz | Data Analytics & Data Science</title>
+
+  <!-- Favicon - Brasil -->
+  <!-- Quando quiser usar um arquivo local, salve /images/br-flag.png e troque o href abaixo -->
+  <link rel="icon" href="https://flagcdn.com/w20/br.png" />
+
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Bebas+Neue&display=swap" rel="stylesheet">
+  <link
+    href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700;800&family=Archivo+Black&display=swap"
+    rel="stylesheet"
+  />
+
   <style>
     :root{
-      /* Bordô escuro → Rosa queimado claro → Off‑white */
-      --bg-1:#4B1C1C;  /* bordô escuro fechado */
-      --bg-2:#C79285;  /* rosa queimado claro */
-      --bg-3:#F8F5F0;  /* off‑white suave */
+      /* Paleta */
+      --deep: #4B1C1C;     /* Bordô escuro */
+      --rose: #C79285;     /* Rosa queimado claro */
+      --off : #F8F5F0;     /* Off-white quente */
+      --ink : #3b1d1f;     /* Texto escuro para fundos claros */
+      --chip: rgba(255,255,255,.75);
 
-      --off:#F8F5F0;   /* texto claro sobre o gradiente */
-      --ink:#2A1A1A;   /* texto escuro para cartões claros */
-
-      --brand:#4B1C1C;       /* cor de marca */
-      --brand-soft:#C79285;  /* tom secundário quente */
-
-      --card:#ffffff;
-      --muted:#6d5f64; /* cinza quente */
-      --radius:20px;
-      --shadow:0 20px 40px rgba(0,0,0,.10);
-      --border:rgba(75,28,28,.12);
+      /* espaçamento */
+      --container: 1120px;
+      --radius: 26px;
     }
 
     *{box-sizing:border-box}
-    html,body{margin:0;padding:0;background:linear-gradient(180deg,var(--bg-1) 0%, var(--bg-2) 55%, var(--bg-3) 100%);color:var(--off);font-family:'Poppins',system-ui,Segoe UI,Roboto,Arial,sans-serif;scroll-behavior:smooth}
+    html{scroll-behavior:smooth}
+    body{
+      margin:0;
+      font-family:Poppins,system-ui,-apple-system,Segoe UI,Roboto,Ubuntu,"Helvetica Neue",Arial,sans-serif;
+      color:var(--off);
+      background:
+        radial-gradient(60rem 30rem at 75% 12%, rgba(0,0,0,.22), transparent 60%),
+        linear-gradient(180deg, var(--deep), var(--rose) 58%, var(--off) 140%);
+      min-height:100dvh;
+    }
+
     a{color:inherit;text-decoration:none}
-    img{max-width:100%;display:block}
 
-    .container{max-width:1100px;margin:0 auto;padding:0 20px}
-    a{color:inherit;text-decoration:none}
-    img{max-width:100%;display:block}
+    /* Layout base */
+    .wrap{max-width:var(--container); margin:0 auto; padding:0 28px}
+    header{position:relative; z-index:10}
+    .topbar{
+      position:fixed; right:20px; top:20px; z-index:60;
+      width:56px;height:56px; border-radius:999px; background:#fff; display:grid; place-items:center;
+      box-shadow:0 10px 26px rgba(0,0,0,.2);
+      cursor:pointer;
+    }
+    .topbar .bars{width:20px;height:2px;background:#1b1320; position:relative}
+    .topbar .bars::before,.topbar .bars::after{
+      content:""; position:absolute; left:0; right:0; height:2px; background:#1b1320;
+      transform-origin:center; transition:.25s ease;
+    }
+    .topbar .bars::before{top:-6px}
+    .topbar .bars::after{top:6px}
 
-    .container{max-width:1100px;margin:0 auto;padding:0 20px}
-
-    /* ====== Floating Hamburger (no top bar) ====== */
-    .fab{position:fixed;top:18px;right:18px;z-index:90;width:44px;height:44px;border-radius:999px;background:#ffffff;border:1px solid var(--border);display:flex;align-items:center;justify-content:center;box-shadow:0 10px 20px rgba(0,0,0,.08)}
-    .fab span{position:relative;width:18px;height:2px;background:#2a2144;display:block}
-    .fab span::before,.fab span::after{content:"";position:absolute;left:0;width:18px;height:2px;background:#2a2144;transition:.2s}
-    .fab span::before{top:-6px}
-    .fab span::after{top:6px}
-
-    /* Drawer */
-    .drawer{position:fixed;inset:0 0 0 auto;width:min(620px,56vw);background:#ffffff;transform:translateX(100%);transition:.25s ease;box-shadow:-20px 0 60px rgba(0,0,0,.14);z-index:95}
+    /* Drawer simples */
+    .drawer{
+      position:fixed; inset:0 0 0 auto; width:min(320px,90%); background:#ffffff;
+      transform:translateX(105%); transition:transform .3s ease; z-index:55;
+      color:#3b1d1f; padding:24px 22px 32px; box-shadow:-10px 0 30px rgba(0,0,0,.25);
+    }
     .drawer.open{transform:none}
-    .drawer header{display:flex;align-items:center;justify-content:space-between;padding:16px 22px;border-bottom:1px solid var(--border)}
-    .drawer .close{font-size:26px;cursor:pointer;border:0;background:none}
-    .drawer nav{padding:18px 26px}
-    .drawer nav a{display:block;padding:14px 0;font-weight:700;color:#2a2144}
+    .drawer h4{margin:6px 0 18px 0; font-weight:800}
+    .drawer a{display:block; padding:14px 2px; font-weight:700}
+    .drawer .close{position:absolute; right:12px; top:10px; background:#f4f1ec; border-radius:12px; padding:8px 12px; cursor:pointer}
 
-    /* ====== Hero ====== */
-    .hero{display:grid;grid-template-columns:1.15fr 1fr;gap:36px;align-items:center;padding:96px 0 44px}
-    .name{font-family:'Bebas Neue',system-ui,sans-serif;font-size:clamp(40px,6.5vw,68px);line-height:.95;letter-spacing:.5px;margin:0 0 10px;text-transform:none;color:var(--off);max-width:16ch}
-    .subtitle{font-size:18px;color:rgba(248,245,240,.92);margin:14px 0;max-width:58ch}
-    .cta{margin-top:22px;display:flex;gap:12px;flex-wrap:wrap}
-    .btn{position:relative;overflow:hidden;padding:12px 18px;border-radius:14px;border:1px solid rgba(248,245,240,.35);background:var(--off);box-shadow:0 10px 22px rgba(0,0,0,.12);font-weight:700;color:#5a2a2f;transition:transform .15s ease, box-shadow .2s ease, background .2s ease, color .2s ease}
-.btn:hover{transform:translateY(-2px);box-shadow:0 16px 30px rgba(0,0,0,.16)}
-.btn:active{transform:translateY(0);box-shadow:0 10px 18px rgba(0,0,0,.12)}
-.btn.primary{background:var(--off);border-color:transparent;color:#5a2a2f}
-.btn.outline{background:transparent;color:var(--off);border-color:rgba(248,245,240,.55)}
-.btn .ripple{position:absolute;inset:auto;pointer-events:none;border-radius:999px;background:rgba(75,28,28,.28);transform:scale(0);opacity:.75;animation:rip .6s ease-out}
-
-
-    /* Photo only circle (no rectangle) */
-    .photo-wrap{display:flex;align-items:center;justify-content:center;position:relative}
-    .avatar{position:relative;width:min(620px,56vw);aspect-ratio:1;overflow:hidden;border:none;border-radius:45% 55% 60% 40% / 40% 35% 65% 60%;box-shadow:0 40px 90px rgba(0,0,0,.18), 0 0 80px rgba(112,38,50,.18);background-image:url('zara.PNG');background-size:cover;background-position:center 28%;will-change:transform,border-radius;animation: gentleZoom .7s ease-out both, blob 12s ease-in-out 1.2s infinite}
-
-    /* ====== Sections ====== */
-    section{padding:46px 0}
-    .section-title{font-size:14px;color:var(--brand);letter-spacing:.18em;text-transform:uppercase;margin-bottom:16px;opacity:.95}
-    .card{background:var(--card);border:1px solid var(--border);border-radius:var(--radius);padding:22px;box-shadow:var(--shadow);color:var(--ink)}
-
-    .about p{color:var(--ink);margin:0 0 14px;opacity:.92}
-
-    /* ====== Tech ====== */
-    .chips{display:flex;flex-wrap:wrap;gap:10px}
-    .chip{padding:8px 12px;border-radius:999px;border:1px solid rgba(75,28,28,.15);background:rgba(248,245,240,.92);font-size:12px;color:var(--brand)}
-
-    /* ====== Portfolio ====== */
-    .filters{display:flex;gap:10px;flex-wrap:wrap;margin-bottom:14px}
-    .filter-btn{padding:10px 14px;border-radius:999px;border:1px solid rgba(75,28,28,.20);background:#fff;font-weight:600;color:var(--brand);cursor:pointer}
-    .filter-btn.active, .filter-btn:hover{background:var(--brand);color:#fff;border-color:var(--brand)}
-    .grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
-    .project{display:flex;flex-direction:column;gap:10px}
-    .project h4{margin:0}
-    .project p{color:var(--muted);margin:0}
-
-    footer{padding:30px 0;color:var(--muted)}
-
-    @media (max-width:960px){
-      .hero{grid-template-columns:1fr}
-      .grid{grid-template-columns:1fr 1fr}
-      .name{font-size:64px}
+    /* HERO */
+    .hero{padding:110px 0 40px}
+    .hero-grid{display:grid; grid-template-columns: 1.05fr .95fr; align-items:center; gap:36px}
+    .eyebrow{font-weight:800; letter-spacing:.05em; margin-bottom:6px}
+    h1{
+      margin:0 0 22px;
+      font-family:"Archivo Black", Poppins, sans-serif;
+      font-size: clamp(34px, 5.4vw, 64px);
+      line-height:1.03;
     }
-    @media (max-width:640px){
-      .grid{grid-template-columns:1fr}
-      .name{font-size:48px}
+    .lead{max-width:56ch; font-size:18px; line-height:1.6; color:var(--off)}
+    .lead strong{font-weight:800}
+
+    .cta{display:flex; flex-wrap:wrap; gap:14px; margin-top:22px}
+
+    /* Botões com ripple */
+    .btn{
+      position:relative; overflow:hidden;
+      padding:12px 18px; border-radius:14px;
+      border:1px solid rgba(248,245,240,.35);
+      background:var(--off); color:#5a2a2f; font-weight:700;
+      box-shadow:0 10px 22px rgba(0,0,0,.12);
+      transition:transform .15s ease, box-shadow .2s ease, background .2s ease, color .2s ease;
+      display:inline-flex; align-items:center; justify-content:center; gap:8px;
     }
-  @keyframes gentleZoom{0%{opacity:.0;transform:scale(.96)}100%{opacity:1;transform:scale(1)}}@keyframes breathe{0%{transform:scale(1)}50%{transform:scale(1.01)}100%{transform:scale(1)}}
-@keyframes blob{0%{border-radius:45% 55% 60% 40% / 40% 35% 65% 60%;transform:translateY(0) scale(1)}33%{border-radius:55% 45% 38% 62% / 48% 60% 40% 52%;transform:translateY(-6px) scale(1.01)}66%{border-radius:36% 64% 58% 42% / 62% 38% 62% 38%;transform:translateY(6px) scale(1.005)}100%{border-radius:45% 55% 60% 40% / 40% 35% 65% 60%;transform:translateY(0) scale(1)}}
-@keyframes rip{to{transform:scale(3);opacity:0}}
-33%{border-radius:55% 45% 38% 62% / 48% 60% 40% 52%;transform:translateY(-6px) scale(1.01)}66%{border-radius:36% 64% 58% 42% / 62% 38% 62% 38%;transform:translateY(6px) scale(1.005)}100%{border-radius:45% 55% 60% 40% / 40% 35% 65% 60%;transform:translateY(0) scale(1)}}
+    .btn:hover{ transform:translateY(-2px); box-shadow:0 16px 30px rgba(0,0,0,.16) }
+    .btn:active{ transform:translateY(0); box-shadow:0 10px 18px rgba(0,0,0,.12) }
+    .btn .ripple{
+      position:absolute; border-radius:999px; pointer-events:none;
+      background:rgba(75,28,28,.28); transform:scale(0); opacity:.75;
+      animation:rip .6s ease-out;
+    }
+    @keyframes rip{ to{ transform:scale(3); opacity:0 } }
+
+    /* Foto orgânica */
+    .photo-wrap{
+      aspect-ratio: 1/1; width:min(680px, 90%); margin-inline:auto;
+      position:relative; overflow:hidden; /* importante pro mask */
+      animation:blob 12s ease-in-out infinite;
+      filter: drop-shadow(0 30px 60px rgba(0,0,0,.35));
+      margin-top:10px;
+    }
+    .photo-wrap img{
+      width:100%; height:100%; object-fit:cover; display:block;
+      transform:scale(1.02);
+    }
+    /* border-radius animado “orgânico” */
+    @keyframes blob{
+      0%  { border-radius:45% 55% 60% 40% / 42% 35% 65% 58% }
+      33% { border-radius:58% 42% 38% 62% / 48% 60% 40% 52% }
+      66% { border-radius:36% 64% 58% 42% / 62% 38% 62% 38% }
+      100%{ border-radius:45% 55% 60% 40% / 42% 35% 65% 58% }
+    }
+
+    /* Seções com cartões */
+    section{padding:72px 0}
+    .section-title{color:var(--off); letter-spacing:.08em; font-weight:800; margin-bottom:18px}
+    .card{
+      background:rgba(255,255,255,.9);
+      color:var(--ink);
+      border-radius:22px; padding:22px 24px;
+      box-shadow:0 14px 30px rgba(0,0,0,.12), 0 2px 0 rgba(0,0,0,.04) inset;
+    }
+
+    .chips{display:flex; flex-wrap:wrap; gap:14px}
+    .chip{
+      background:rgba(75,28,28,.05);
+      border:1px solid rgba(75,28,28,.18);
+      color:#4b1c1c;
+      padding:10px 14px; border-radius:999px; font-weight:700;
+      box-shadow:0 4px 10px rgba(0,0,0,.06);
+      display:inline-flex; align-items:center; gap:8px;
+    }
+
+    footer{padding:60px 0 40px; color:rgba(255,255,255,.8); text-align:center}
+
+    /* Responsivo */
+    @media (max-width: 990px){
+      .hero-grid{grid-template-columns:1fr; gap:28px}
+      .photo-wrap{order:-1; width:min(520px, 92%)}
+    }
+    @media (max-width: 560px){
+      .cta{gap:10px}
+      .btn{padding:11px 16px}
+    }
   </style>
 </head>
 <body>
-  <!-- Floating only-menu button (no white bar, no name) -->
-  <button class="fab" aria-label="Open menu" aria-controls="drawer" aria-expanded="false"><span></span></button>
 
-  <!-- Slide-in Drawer -->
-  <aside class="drawer" id="drawer" aria-hidden="true">
-    <header>
-      <strong>Menu</strong>
-      <button class="close" aria-label="Close menu">✕</button>
-    </header>
-    <nav>
-      <a href="#top">Home</a>
-      <a href="#about">About</a>
-      <a href="#tech">Tech</a>
-      <a href="#projects">Portfolio</a>
-      <a href="#contact">Contact</a>
-    </nav>
-  </aside>
+  <!-- Botão do menu -->
+  <div class="topbar" id="btnMenu" aria-label="Open menu">
+    <span class="bars"></span>
+  </div>
 
-  <main id="top" class="container">
-    <!-- ====== Hero ====== -->
-    <section class="hero" aria-label="Intro">
-      <div>
-        <h1 class="name">👋 Hi, I'm Zara Louise Luz!</h1>
-        <p class="subtitle"><strong>Turning data into clear, actionable insights.</strong> Business Administration background → BI & DS. I build dashboards, automate data flows, and design data models that support smart decisions.</p>
-        <div class=\"cta\">
-          <a class=\"btn primary\" href=\"#projects\">View Projects<\/a>
-          <a class=\"btn primary\" href=\"ZaraLouiseCV.pdf\" download>Download CV<\/a>
-          <a class=\"btn primary\" href=\"#tech\">Tools<\/a>
-          <a class=\"btn primary\" href=\"#certifications\">Certifications<\/a>
-        <\/div>
-      </div>
-      <div class="photo-wrap">
-        <!-- NOTE: if your image is images/zaraj.jpg keep as below; change to zara.jpg if needed -->
-        <div class="avatar" role="img" aria-label="Portrait of Zara Louise Luz"></div>
+  <!-- Drawer -->
+  <nav class="drawer" id="drawer" aria-label="Site menu">
+    <div class="close" id="closeDrawer">✕</div>
+    <h4>Menu</h4>
+    <a href="#about">About</a>
+    <a href="#tech">Tech</a>
+    <a href="#projects">Portfolio</a>
+    <a href="#certifications">Certifications</a>
+    <a href="#contact">Contact</a>
+  </nav>
+
+  <main>
+
+    <!-- HERO -->
+    <section class="hero wrap" id="about">
+      <div class="hero-grid">
+        <div>
+          <div class="eyebrow">👋</div>
+          <h1>Hi, I'm Zara Louise Luz!</h1>
+
+          <p class="lead">
+            <strong>Turning data into clear, actionable insights.</strong>
+            Business Administration background → BI &amp; DS. I build dashboards, automate data flows,
+            and design data models that support smart decisions.
+          </p>
+
+          <div class="cta">
+            <a class="btn" href="#projects">View Projects</a>
+            <a class="btn" href="ZaraLouiseCV.pdf" download>Download CV</a>
+            <a class="btn" href="#tech">Tools</a>
+            <a class="btn" href="#certifications">Certifications</a>
+          </div>
+        </div>
+
+        <div class="photo-wrap">
+          <!-- Use exatamente o nome do seu arquivo no repo (case sensitive) -->
+          <img src="zara.PNG" alt="Zara Louise Luz – profile photo">
+        </div>
       </div>
     </section>
 
-    <!-- ====== About ====== -->
-    <section id="about" class="about">
-      <h3 class="section-title">About</h3>
-      <div class="card">
-        <p>I'm a <strong>data-driven professional</strong> with a background in <strong>Business Administration</strong> and a growing passion for <strong>Data Analytics</strong> and <strong>Data Science</strong>. My recent experience includes working as a <strong>Business Data Analyst at SeguroBet</strong>, where I developed interactive <strong>Power BI dashboards</strong>, automated data flows, and turned raw data into meaningful business insights.</p>
-        <p>More recently, during my time as a <strong>Data Warehousing Analyst in Germany</strong>, I helped design and implement <strong>data models</strong>, optimize <strong>ETL processes</strong>, and build <strong>database systems</strong> to support smarter operational decisions.</p>
-        <p>I love transforming complex data into <strong>clear, actionable insights</strong> that make a real impact. Outside of work, you'll find me exploring datasets, learning new tools, or building creative handmade projects — a reminder of the joy of crafting things from scratch.</p>
-      </div>
-    </section>
-
-    <!-- ====== Tech ====== -->
+    <!-- TECH STACK & TOOLS -->
     <section id="tech">
-      <h3 class="section-title">Tech Stack & Tools</h3>
-      <div class="card chips">
-        <span class="chip">Power BI</span>
-        <span class="chip">Python</span>
-        <span class="chip">Pandas</span>
-        <span class="chip">SQL</span>
-        <span class="chip">MySQL</span>
-        <span class="chip">Apache Airflow</span>
-        <span class="chip">Matplotlib</span>
-        <span class="chip">Seaborn</span>
-        <span class="chip">ETL</span>
-        <span class="chip">Data Modeling</span>
+      <div class="wrap">
+        <h3 class="section-title">TECH STACK &amp; TOOLS</h3>
+        <div class="card chips">
+          <span class="chip">Power BI</span>
+          <span class="chip">Python</span>
+          <span class="chip">Pandas</span>
+          <span class="chip">SQL</span>
+          <span class="chip">MySQL</span>
+          <span class="chip">Apache Airflow</span>
+          <span class="chip">Matplotlib</span>
+          <span class="chip">Seaborn</span>
+          <span class="chip">ETL</span>
+          <span class="chip">Data Modeling</span>
+        </div>
       </div>
     </section>
 
-    <!-- ====== Portfolio ====== -->
+    <!-- PORTFOLIO (exemplo de âncora) -->
     <section id="projects">
-      <h3 class="section-title">Portfolio</h3>
-      <div class="card">
-        <p style="margin-top:0;color:#49445d">Check out some of the case studies I built as a Data Analyst.</p>
-        <div class="filters" role="tablist" aria-label="Portfolio filters">
-          <button class="filter-btn active" data-filter="all" role="tab">All</button>
-          <button class="filter-btn" data-filter="powerbi" role="tab">Power BI</button>
-          <button class="filter-btn" data-filter="python" role="tab">Python</button>
-          <button class="filter-btn" data-filter="sql" role="tab">SQL</button>
-        </div>
-        <div class="grid" id="portfolioGrid">
-          <a class="card project" data-tags="powerbi" href="https://github.com/yourusername/sales-dashboard" target="_blank" rel="noopener">
-            <h4>Sales Performance Dashboard</h4>
-            <p>Power BI dashboard with automated refresh, KPI tracking and cohort analysis.</p>
-            <span class="chip">Power BI</span>
-          </a>
-          <a class="card project" data-tags="python" href="https://github.com/yourusername/churn-analysis" target="_blank" rel="noopener">
-            <h4>Customer Churn Analysis</h4>
-            <p>Exploratory data analysis and predictive modeling to identify churn drivers.</p>
-            <span class="chip">Python</span>
-            <span class="chip">Pandas</span>
-          </a>
-          <a class="card project" data-tags="sql" href="https://github.com/yourusername/inventory-control" target="_blank" rel="noopener">
-            <h4>Inventory Control System</h4>
-            <p>Database-backed inventory tracking with data model, ETL and monitoring views.</p>
-            <span class="chip">SQL</span>
-            <span class="chip">Data Modeling</span>
-          </a>
-          <a class="card project" data-tags="powerbi" href="https://github.com/yourusername/marketing-funnel" target="_blank" rel="noopener">
-            <h4>Marketing Funnel Insights</h4>
-            <p>Interactive funnel with segmentation, retention and LTV breakdown.</p>
-            <span class="chip">Power BI</span>
-          </a>
-          <a class="card project" data-tags="python" href="https://github.com/yourusername/nlp-reviews" target="_blank" rel="noopener">
-            <h4>Product Reviews NLP</h4>
-            <p>Text preprocessing, sentiment analysis and topic modeling for CX insights.</p>
-            <span class="chip">Python</span>
-          </a>
+      <div class="wrap">
+        <h3 class="section-title">Portfolio</h3>
+        <div class="card" style="min-height:140px">
+          Em breve: cards dos projetos (Power BI / Python / SQL).
         </div>
       </div>
     </section>
 
-    <!-- ====== Certifications ====== -->
-    <section id=\"certifications\">
-      <h3 class=\"section-title\">Certifications<\/h3>
-      <div class=\"card chips\">
-        <span class=\"chip\">Google Data Analytics (Coursera)<\/span>
-        <span class=\"chip\">IBM Data Science (Coursera)<\/span>
-        <span class=\"chip\">Power BI Data Analyst Associate (PL-300)<\/span>
-        <span class=\"chip\">SQL (Advanced) – HackerRank<\/span>
-      <\/div>
-    <\/section>
+    <!-- CERTIFICATIONS -->
+    <section id="certifications">
+      <div class="wrap">
+        <h3 class="section-title">Certifications</h3>
+        <div class="card chips">
+          <span class="chip">Google Data Analytics (Coursera)</span>
+          <span class="chip">IBM Data Science (Coursera)</span>
+          <span class="chip">PL-300: Power BI Data Analyst</span>
+          <span class="chip">SQL (Advanced) — HackerRank</span>
+        </div>
+      </div>
+    </section>
 
-    <!-- ====== Contact ====== -->
+    <!-- CONTACT (opcional) -->
     <section id="contact">
-      <h3 class="section-title">Contact</h3>
-      <div class="card" style="display:flex;gap:14px;flex-wrap:wrap">
-        <a class="btn" href="mailto:youremail@example.com" aria-label="Email">Email</a>
-        <a class="btn" href="https://www.linkedin.com/in/yourlinkedin" target="_blank" rel="noopener" aria-label="LinkedIn">LinkedIn</a>
-        <a class="btn" href="#top" aria-label="Back to top">Back to top ↑</a>
+      <div class="wrap">
+        <h3 class="section-title">Contact</h3>
+        <div class="card">
+          Me chame no LinkedIn, GitHub, ou por e-mail. 🙂
+        </div>
       </div>
     </section>
 
-    <footer class="container" aria-label="Footer">
-      <p>© <span id="year"></span> Zara Louise — Built with ❤️ and hosted on GitHub Pages.</p>
-    </footer>
   </main>
 
-  <script>
-    // Keep page at top on load
-try{ if('scrollRestoration' in history){ history.scrollRestoration='manual'; } if(location.hash){ history.replaceState(null,'',location.pathname); } }catch(e){}
+  <footer>
+    © <span id="year"></span> Zara Louise Luz. All rights reserved.
+  </footer>
 
-// Year in footer
+  <script>
+    // Ano no rodapé
     document.getElementById('year').textContent = new Date().getFullYear();
 
-    // Button ripple effect
+    // Drawer
+    const drawer = document.getElementById('drawer');
+    const btnMenu = document.getElementById('btnMenu');
+    const closeDrawer = document.getElementById('closeDrawer');
+    btnMenu.addEventListener('click', ()=> drawer.classList.add('open'));
+    closeDrawer.addEventListener('click', ()=> drawer.classList.remove('open'));
+    drawer.querySelectorAll('a').forEach(a => a.addEventListener('click', ()=> drawer.classList.remove('open')));
+
+    // Ripple nos botões
     document.querySelectorAll('.btn').forEach(btn=>{
       btn.addEventListener('click', e=>{
-        const rect = btn.getBoundingClientRect();
-        const size = Math.max(rect.width, rect.height);
+        const r = btn.getBoundingClientRect();
+        const size = Math.max(r.width, r.height);
         const ripple = document.createElement('span');
         ripple.className = 'ripple';
         ripple.style.width = ripple.style.height = size + 'px';
-        ripple.style.left = (e.clientX - rect.left - size/2) + 'px';
-        ripple.style.top  = (e.clientY - rect.top  - size/2) + 'px';
+        ripple.style.left = (e.clientX - r.left - size/2) + 'px';
+        ripple.style.top  = (e.clientY - r.top  - size/2) + 'px';
         btn.appendChild(ripple);
         setTimeout(()=>ripple.remove(), 650);
       });
     });
-
-    // Portfolio filter
-    const buttons = document.querySelectorAll('.filter-btn');(btn => btn.addEventListener('click', () => {
-      buttons.forEach(b => b.classList.remove('active'));
-      btn.classList.add('active');
-      const filter = btn.dataset.filter;
-      cards.forEach(card => {
-        const tags = card.dataset.tags.split(' ');
-        const show = filter === 'all' || tags.includes(filter);
-        card.style.display = show ? '' : 'none';
-      });
-    }));
-
-    // Drawer behavior
-    const fab = document.querySelector('.fab');
-    const drawer = document.getElementById('drawer');
-    const closeBtn = drawer.querySelector('.close');
-
-    function toggleDrawer(open){
-      const isOpen = open ?? !drawer.classList.contains('open');
-      drawer.classList.toggle('open', isOpen);
-      fab.setAttribute('aria-expanded', String(isOpen));
-      drawer.setAttribute('aria-hidden', String(!isOpen));
-      document.body.style.overflow = isOpen ? 'hidden' : '';
-    }
-
-    fab.addEventListener('click', () => toggleDrawer());
-    closeBtn.addEventListener('click', () => toggleDrawer(false));
-    drawer.addEventListener('click', (e)=>{ if(e.target === drawer) toggleDrawer(false); });
   </script>
 </body>
 </html>
