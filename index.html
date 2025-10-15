@@ -13,10 +13,10 @@
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Bebas+Neue&display=swap" rel="stylesheet">
   <style>
     :root{
-      /* Bordô escuro → Rosa queimado claro → Off‑white */
+      /* Bordô escuro → Rosa queimado claro → Off-white */
       --bg-1:#4B1C1C;  /* bordô escuro fechado */
       --bg-2:#C79285;  /* rosa queimado claro */
-      --bg-3:#F8F5F0;  /* off‑white suave */
+      --bg-3:#F8F5F0;  /* off-white suave */
 
       --off:#F8F5F0;   /* texto claro sobre o gradiente */
       --ink:#2A1A1A;   /* texto escuro para cartões claros */
@@ -32,11 +32,13 @@
     }
 
     *{box-sizing:border-box}
-    html,body{margin:0;padding:0;background:linear-gradient(180deg,var(--bg-1) 0%, var(--bg-2) 55%, var(--bg-3) 100%);color:var(--off);font-family:'Poppins',system-ui,Segoe UI,Roboto,Arial,sans-serif;scroll-behavior:smooth}
-    a{color:inherit;text-decoration:none}
-    img{max-width:100%;display:block}
-
-    .container{max-width:1100px;margin:0 auto;padding:0 20px}
+    html,body{
+      margin:0;padding:0;
+      background:linear-gradient(180deg,var(--bg-1) 0%, var(--bg-2) 55%, var(--bg-3) 100%);
+      color:var(--off);
+      font-family:'Poppins',system-ui,Segoe UI,Roboto,Arial,sans-serif;
+      scroll-behavior:smooth
+    }
     a{color:inherit;text-decoration:none}
     img{max-width:100%;display:block}
 
@@ -62,17 +64,20 @@
     .name{font-family:'Bebas Neue',system-ui,sans-serif;font-size:clamp(40px,6.5vw,68px);line-height:.95;letter-spacing:.5px;margin:0 0 10px;text-transform:none;color:var(--off);max-width:16ch}
     .subtitle{font-size:18px;color:rgba(248,245,240,.92);margin:14px 0;max-width:58ch}
     .cta{margin-top:22px;display:flex;gap:12px;flex-wrap:wrap}
-    .btn{position:relative;overflow:hidden;padding:12px 18px;border-radius:14px;border:1px solid rgba(248,245,240,.35);background:var(--off);box-shadow:0 10px 22px rgba(0,0,0,.12);font-weight:700;color:#5a2a2f;transition:transform .15s ease, box-shadow .2s ease, background .2s ease, color .2s ease}
-.btn:hover{transform:translateY(-2px);box-shadow:0 16px 30px rgba(0,0,0,.16)}
-.btn:active{transform:translateY(0);box-shadow:0 10px 18px rgba(0,0,0,.12)}
-.btn.primary{background:var(--off);border-color:transparent;color:#5a2a2f}
-.btn.outline{background:transparent;color:var(--off);border-color:rgba(248,245,240,.55)}
-.btn .ripple{position:absolute;inset:auto;pointer-events:none;border-radius:999px;background:rgba(75,28,28,.28);transform:scale(0);opacity:.75;animation:rip .6s ease-out}
-
+    .btn{padding:12px 16px;border-radius:12px;border:1px solid rgba(248,245,240,.2);background:rgba(248,245,240,.95);box-shadow:0 10px 25px rgba(112,38,50,.18);font-weight:700;color:#5a2a2f}
+    .btn.primary{background:var(--off);border-color:transparent;color:#5a2a2f}
+    .btn.outline{background:transparent;color:var(--off);border:1px solid rgba(248,245,240,.45);box-shadow:none}
+    .btn.outline:hover{background:rgba(248,245,240,.10);border-color:rgba(248,245,240,.65)}
 
     /* Photo only circle (no rectangle) */
     .photo-wrap{display:flex;align-items:center;justify-content:center;position:relative}
-    .avatar{position:relative;width:min(620px,56vw);aspect-ratio:1;overflow:hidden;border:none;border-radius:45% 55% 60% 40% / 40% 35% 65% 60%;box-shadow:0 40px 90px rgba(0,0,0,.18), 0 0 80px rgba(112,38,50,.18);background-image:url('zara.PNG');background-size:cover;background-position:center 28%;will-change:transform,border-radius;animation: gentleZoom .7s ease-out both, blob 12s ease-in-out 1.2s infinite}
+    .avatar{
+      position:relative;width:min(620px,56vw);aspect-ratio:1;overflow:hidden;border:none;
+      border-radius:45% 55% 60% 40% / 40% 35% 65% 60%;
+      box-shadow:0 40px 90px rgba(0,0,0,.18), 0 0 80px rgba(112,38,50,.18);
+      background-image:url('zara.PNG');background-size:cover;background-position:center 28%;
+      will-change:transform,border-radius;animation: gentleZoom .7s ease-out both, blob 12s ease-in-out 1.2s infinite
+    }
 
     /* ====== Sections ====== */
     section{padding:46px 0}
@@ -84,6 +89,15 @@
     /* ====== Tech ====== */
     .chips{display:flex;flex-wrap:wrap;gap:10px}
     .chip{padding:8px 12px;border-radius:999px;border:1px solid rgba(75,28,28,.15);background:rgba(248,245,240,.92);font-size:12px;color:var(--brand)}
+
+    /* ====== Certifications ====== */
+    .cert-grid{display:grid;gap:16px;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));margin-top:8px}
+    .cert-card{background:var(--card);border:1px solid var(--border);border-radius:var(--radius);padding:18px;box-shadow:var(--shadow);color:var(--ink)}
+    .cert-card h3{font-size:16px;line-height:1.25;margin:0 0 8px;color:var(--ink)}
+    .cert-card .issuer{margin:0 0 6px;color:var(--muted);font-size:13px}
+    .cert-card .meta{margin:0 0 12px;color:var(--muted);font-size:13px}
+    .cert-link{display:inline-block;font-weight:700;color:var(--brand);border:1px solid rgba(75,28,28,.2);padding:8px 12px;border-radius:10px;background:#fff}
+    .cert-link:hover{background:var(--brand);color:#fff;border-color:var(--brand)}
 
     /* ====== Portfolio ====== */
     .filters{display:flex;gap:10px;flex-wrap:wrap;margin-bottom:14px}
@@ -105,10 +119,15 @@
       .grid{grid-template-columns:1fr}
       .name{font-size:48px}
     }
-  @keyframes gentleZoom{0%{opacity:.0;transform:scale(.96)}100%{opacity:1;transform:scale(1)}}@keyframes breathe{0%{transform:scale(1)}50%{transform:scale(1.01)}100%{transform:scale(1)}}
-@keyframes blob{0%{border-radius:45% 55% 60% 40% / 40% 35% 65% 60%;transform:translateY(0) scale(1)}33%{border-radius:55% 45% 38% 62% / 48% 60% 40% 52%;transform:translateY(-6px) scale(1.01)}66%{border-radius:36% 64% 58% 42% / 62% 38% 62% 38%;transform:translateY(6px) scale(1.005)}100%{border-radius:45% 55% 60% 40% / 40% 35% 65% 60%;transform:translateY(0) scale(1)}}
-@keyframes rip{to{transform:scale(3);opacity:0}}
-33%{border-radius:55% 45% 38% 62% / 48% 60% 40% 52%;transform:translateY(-6px) scale(1.01)}66%{border-radius:36% 64% 58% 42% / 62% 38% 62% 38%;transform:translateY(6px) scale(1.005)}100%{border-radius:45% 55% 60% 40% / 40% 35% 65% 60%;transform:translateY(0) scale(1)}}
+
+    @keyframes gentleZoom{0%{opacity:.0;transform:scale(.96)}100%{opacity:1;transform:scale(1)}}
+    @keyframes breathe{0%{transform:scale(1)}50%{transform:scale(1.01)}100%{transform:scale(1)}}
+    @keyframes blob{
+      0%{border-radius:45% 55% 60% 40% / 40% 35% 65% 60%;transform:translateY(0) scale(1)}
+      33%{border-radius:55% 45% 38% 62% / 48% 60% 40% 52%;transform:translateY(-6px) scale(1.01)}
+      66%{border-radius:36% 64% 58% 42% / 62% 38% 62% 38%;transform:translateY(6px) scale(1.005)}
+      100%{border-radius:45% 55% 60% 40% / 40% 35% 65% 60%;transform:translateY(0) scale(1)}
+    }
   </style>
 </head>
 <body>
@@ -124,8 +143,9 @@
     <nav>
       <a href="#top">Home</a>
       <a href="#about">About</a>
-      <a href="#tech">Tech</a>
+      <a href="#tech">Tools</a>
       <a href="#projects">Portfolio</a>
+      <a href="#certifications">Certifications</a>
       <a href="#contact">Contact</a>
     </nav>
   </aside>
@@ -136,15 +156,14 @@
       <div>
         <h1 class="name">👋 Hi, I'm Zara Louise Luz!</h1>
         <p class="subtitle"><strong>Turning data into clear, actionable insights.</strong> Business Administration background → BI & DS. I build dashboards, automate data flows, and design data models that support smart decisions.</p>
-        <div class=\"cta\">
-          <a class=\"btn primary\" href=\"#projects\">View Projects<\/a>
-          <a class=\"btn primary\" href=\"ZaraLouiseCV.pdf\" download>Download CV<\/a>
-          <a class=\"btn primary\" href=\"#tech\">Tools<\/a>
-          <a class=\"btn primary\" href=\"#certifications\">Certifications<\/a>
-        <\/div>
+        <div class="cta">
+          <a class="btn primary" href="#projects">View Projects</a>
+          <a class="btn" href="ZaraLouiseCV.pdf" download>Download CV</a>
+          <a class="btn outline" href="#tech">Tools</a>
+          <a class="btn" href="#certifications">Certifications</a>
+        </div>
       </div>
       <div class="photo-wrap">
-        <!-- NOTE: if your image is images/zaraj.jpg keep as below; change to zara.jpg if needed -->
         <div class="avatar" role="img" aria-label="Portrait of Zara Louise Luz"></div>
       </div>
     </section>
@@ -159,7 +178,7 @@
       </div>
     </section>
 
-    <!-- ====== Tech ====== -->
+    <!-- ====== Tech (Tools) ====== -->
     <section id="tech">
       <h3 class="section-title">Tech Stack & Tools</h3>
       <div class="card chips">
@@ -173,6 +192,34 @@
         <span class="chip">Seaborn</span>
         <span class="chip">ETL</span>
         <span class="chip">Data Modeling</span>
+      </div>
+    </section>
+
+    <!-- ====== Certifications ====== -->
+    <section id="certifications" class="section card">
+      <div class="section-title">Certifications</div>
+      <div class="cert-grid">
+        <!-- EXEMPLOS — troque pelos seus -->
+        <article class="cert-card">
+          <h3>Google Data Analytics (Professional Certificate)</h3>
+          <p class="issuer">Issuer: Google / Coursera</p>
+          <p class="meta">Status: In progress</p>
+          <a href="#" class="cert-link" target="_blank" rel="noopener">View credential</a>
+        </article>
+
+        <article class="cert-card">
+          <h3>Microsoft Certified: Power BI Data Analyst (PL-300)</h3>
+          <p class="issuer">Issuer: Microsoft</p>
+          <p class="meta">Status: Planned</p>
+          <a href="#" class="cert-link" target="_blank" rel="noopener">View credential</a>
+        </article>
+
+        <article class="cert-card">
+          <h3>SQL (Intermediate)</h3>
+          <p class="issuer">Issuer: HackerRank</p>
+          <p class="meta">Status: Completed</p>
+          <a href="#" class="cert-link" target="_blank" rel="noopener">View credential</a>
+        </article>
       </div>
     </section>
 
@@ -219,17 +266,6 @@
       </div>
     </section>
 
-    <!-- ====== Certifications ====== -->
-    <section id=\"certifications\">
-      <h3 class=\"section-title\">Certifications<\/h3>
-      <div class=\"card chips\">
-        <span class=\"chip\">Google Data Analytics (Coursera)<\/span>
-        <span class=\"chip\">IBM Data Science (Coursera)<\/span>
-        <span class=\"chip\">Power BI Data Analyst Associate (PL-300)<\/span>
-        <span class=\"chip\">SQL (Advanced) – HackerRank<\/span>
-      <\/div>
-    <\/section>
-
     <!-- ====== Contact ====== -->
     <section id="contact">
       <h3 class="section-title">Contact</h3>
@@ -247,28 +283,18 @@
 
   <script>
     // Keep page at top on load
-try{ if('scrollRestoration' in history){ history.scrollRestoration='manual'; } if(location.hash){ history.replaceState(null,'',location.pathname); } }catch(e){}
+    try{
+      if('scrollRestoration' in history){ history.scrollRestoration='manual'; }
+      if(location.hash){ history.replaceState(null,'',location.pathname); }
+    }catch(e){}
 
-// Year in footer
+    // Year in footer
     document.getElementById('year').textContent = new Date().getFullYear();
 
-    // Button ripple effect
-    document.querySelectorAll('.btn').forEach(btn=>{
-      btn.addEventListener('click', e=>{
-        const rect = btn.getBoundingClientRect();
-        const size = Math.max(rect.width, rect.height);
-        const ripple = document.createElement('span');
-        ripple.className = 'ripple';
-        ripple.style.width = ripple.style.height = size + 'px';
-        ripple.style.left = (e.clientX - rect.left - size/2) + 'px';
-        ripple.style.top  = (e.clientY - rect.top  - size/2) + 'px';
-        btn.appendChild(ripple);
-        setTimeout(()=>ripple.remove(), 650);
-      });
-    });
-
     // Portfolio filter
-    const buttons = document.querySelectorAll('.filter-btn');(btn => btn.addEventListener('click', () => {
+    const buttons = document.querySelectorAll('.filter-btn');
+    const cards = document.querySelectorAll('#portfolioGrid .project');
+    buttons.forEach(btn => btn.addEventListener('click', () => {
       buttons.forEach(b => b.classList.remove('active'));
       btn.classList.add('active');
       const filter = btn.dataset.filter;
