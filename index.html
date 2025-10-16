@@ -14,20 +14,18 @@
   <style>
     :root{
       /* Bordô escuro → Rosa queimado claro → Off-white */
-      --bg-1:#4B1C1C;  /* bordô escuro fechado */
-      --bg-2:#C79285;  /* rosa queimado claro */
-      --bg-3:#F8F5F0;  /* off-white suave */
+      --bg-1:#4B1C1C;
+      --bg-2:#C79285;
+      --bg-3:#F8F5F0;
 
-      --off:#F8F5F0;            /* texto claro sobre o gradiente */
-      --ink:#2A1A1A;            /* texto escuro para cartões claros */
-      --brand:#4B1C1C;          /* cor de marca */
-      --brand-soft:#C79285;     /* tom secundário quente */
-      --btn:#F8F5F0;            /* base dos botões */
-      --btn-fg:#5a2a2f;         /* texto do botão */
-      --btn-hover:#7A3A3A;      /* cor ao passar o mouse */
+      --off:#F8F5F0;
+      --ink:#2A1A1A;
+
+      --brand:#4B1C1C;
+      --brand-soft:#C79285;
 
       --card:#ffffff;
-      --muted:#6d5f64;          /* cinza quente */
+      --muted:#6d5f64;
       --radius:20px;
       --shadow:0 20px 40px rgba(0,0,0,.10);
       --border:rgba(75,28,28,.12);
@@ -67,41 +65,47 @@
     .subtitle{font-size:18px;color:rgba(248,245,240,.92);margin:14px 0;max-width:58ch}
     .cta{margin-top:22px;display:flex;gap:12px;flex-wrap:wrap}
 
-    /* ====== Botões – padronizados + animação (hover e ripple) ====== */
+    /* ===== Buttons (com sombra + animação iguais) ===== */
     .btn{
-      position:relative; overflow:hidden;
-      padding:14px 18px;border-radius:12px;
-      border:1px solid rgba(248,245,240,.2);
-      background:var(--btn); color:var(--btn-fg);
-      font-weight:700; transition:.22s ease;
-      box-shadow:0 10px 25px rgba(112,38,50,.18);
-      display:inline-flex; align-items:center; gap:8px;
-    }
-    .btn.primary{background:var(--btn);color:var(--btn-fg);border-color:rgba(248,245,240,.2)}
-    /* Se algum outline aparecer, force a mesma aparência do padrão */
-    .btn.outline{background:var(--btn);color:var(--btn-fg);border-color:rgba(248,245,240,.2);box-shadow:0 10px 25px rgba(112,38,50,.18)}
+      --btn-bg: rgba(248,245,240,.95);
+      --btn-text:#5a2a2f;
+      --btn-border: transparent;
 
+      padding:12px 18px;
+      border-radius:14px;
+      border:1px solid var(--btn-border);
+      background:var(--btn-bg);
+      color:var(--btn-text);
+      font-weight:700;
+      box-shadow:0 12px 28px rgba(112,38,50,.18);
+      transform:translateY(0);
+      transition:transform .18s ease, box-shadow .18s ease, background .18s ease, color .18s ease, border-color .18s ease;
+    }
     .btn:hover{
       transform:translateY(-2px);
-      box-shadow:0 16px 32px rgba(0,0,0,.18);
-      background:var(--btn-hover); color:#fff;
-      border-color:rgba(255,255,255,.08);
+      box-shadow:0 18px 36px rgba(112,38,50,.26);
+      background:#fff;
+      color:#4B1C1C;
+      border-color:rgba(75,28,28,.22);
     }
-    /* Ripple */
-    .btn::after{
-      content:""; position:absolute; pointer-events:none;
-      left:var(--x,50%); top:var(--y,50%);
-      width:0; height:0; border-radius:50%;
-      background:rgba(255,255,255,.35);
-      transform:translate(-50%,-50%);
-      transition:width .5s ease, height .5s ease, opacity .6s ease;
-      opacity:0;
+    .btn.primary{ /* o “View Projects” usa o mesmo visual base */
+      --btn-bg: var(--off);
+      --btn-text:#5a2a2f;
     }
-    .btn:active::after{
-      width:220%; height:220%; opacity:1; transition:0s;
+    .btn.outline{
+      --btn-bg: transparent;
+      --btn-text: var(--off);
+      --btn-border: rgba(248,245,240,.45);
+      box-shadow:none;
+    }
+    .btn.outline:hover{
+      --btn-bg: rgba(248,245,240,.10);
+      --btn-text: var(--off);
+      --btn-border: rgba(248,245,240,.65);
+      box-shadow:none;
     }
 
-    /* Photo only circle (no rectangle) */
+    /* Photo “blob” (círculo orgânico) */
     .photo-wrap{display:flex;align-items:center;justify-content:center;position:relative}
     .avatar{
       position:relative;width:min(620px,56vw);aspect-ratio:1;overflow:hidden;border:none;
@@ -124,11 +128,18 @@
 
     /* ====== Certifications ====== */
     .cert-grid{display:grid;gap:16px;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));margin-top:8px}
-    .cert-card{background:var(--card);border:1px solid var(--border);border-radius:var(--radius);padding:18px;box-shadow:var(--shadow);color:var(--ink)}
-    .cert-card h3{font-size:16px;line-height:1.25;margin:0 0 8px;color:var(--ink)}
-    .cert-card .issuer{margin:0 0 6px;color:var(--muted);font-size:13px}
-    .cert-card .meta{margin:0 0 12px;color:var(--muted);font-size:13px}
-    .cert-link{display:inline-block;font-weight:700;color:var(--brand);border:1px solid rgba(75,28,28,.2);padding:8px 12px;border-radius:10px;background:#fff}
+    .cert-card{background:var(--card);border:1px solid var(--border);border-radius:var(--radius);padding:18px;box-shadow:var(--shadow);color:var(--ink);display:flex;flex-direction:column;gap:8px}
+    .cert-card h3{margin:0 0 6px 0;line-height:1.25;color:var(--ink);text-indent:0} /* fix h3 "pra dentro" */
+    .cert-card .issuer{margin:0;color:var(--muted);font-size:13px}
+    .cert-card .meta{margin:0 0 8px;color:var(--muted);font-size:13px}
+
+    /* badges de status */
+    .badge{display:inline-block;padding:4px 10px;border-radius:999px;font-size:12px;font-weight:700}
+    .badge.ip{background:#fff5d6;color:#8a5b00;border:1px solid #f2d592}     /* In progress */
+    .badge.pl{background:#f3e8ff;color:#5b21b6;border:1px solid #e0d0ff}     /* Planned */
+    .badge.ok{background:#e9fbe8;color:#166534;border:1px solid #c9f1c7}     /* Completed */
+
+    .cert-link{align-self:flex-start;display:inline-block;font-weight:700;color:var(--brand);border:1px solid rgba(75,28,28,.2);padding:8px 12px;border-radius:10px;background:#fff}
     .cert-link:hover{background:var(--brand);color:#fff;border-color:var(--brand)}
 
     /* ====== Portfolio ====== */
@@ -153,7 +164,6 @@
     }
 
     @keyframes gentleZoom{0%{opacity:.0;transform:scale(.96)}100%{opacity:1;transform:scale(1)}}
-    @keyframes breathe{0%{transform:scale(1)}50%{transform:scale(1.01)}100%{transform:scale(1)}}
     @keyframes blob{
       0%{border-radius:45% 55% 60% 40% / 40% 35% 65% 60%;transform:translateY(0) scale(1)}
       33%{border-radius:55% 45% 38% 62% / 48% 60% 40% 52%;transform:translateY(-6px) scale(1.01)}
@@ -163,7 +173,7 @@
   </style>
 </head>
 <body>
-  <!-- Floating only-menu button (no white bar, no name) -->
+  <!-- Floating only-menu button -->
   <button class="fab" aria-label="Open menu" aria-controls="drawer" aria-expanded="false"><span></span></button>
 
   <!-- Slide-in Drawer -->
@@ -191,7 +201,7 @@
         <div class="cta">
           <a class="btn primary" href="#projects">View Projects</a>
           <a class="btn" href="ZaraLouiseCV.pdf" download>Download CV</a>
-          <a class="btn" href="#tech">Tools</a>
+          <a class="btn outline" href="#tech">Tools</a>
           <a class="btn" href="#certifications">Certifications</a>
         </div>
       </div>
@@ -230,27 +240,97 @@
     <!-- ====== Certifications ====== -->
     <section id="certifications" class="section card">
       <div class="section-title">Certifications</div>
+
       <div class="cert-grid">
+
+        <!-- 1. Google Advanced Data Analytics (In progress) -->
         <article class="cert-card">
-          <h3>Google Data Analytics (Professional Certificate)</h3>
+          <h3>Google Advanced Data Analytics (Professional Certificate)</h3>
           <p class="issuer">Issuer: Google / Coursera</p>
-          <p class="meta">Status: In progress</p>
-          <a href="#" class="cert-link" target="_blank" rel="noopener">View credential</a>
+          <p class="meta"><span class="badge ip">In progress</span></p>
+          <a href="https://www.coursera.org/professional-certificates/google-advanced-data-analytics" class="cert-link" target="_blank" rel="noopener">View credential</a>
         </article>
 
+        <!-- 2. Apache Airflow (In progress) -->
+        <article class="cert-card">
+          <h3>Apache Airflow</h3>
+          <p class="issuer">Issuer: Udemy</p>
+          <p class="meta"><span class="badge ip">In progress</span></p>
+          <a href="https://www.udemy.com" class="cert-link" target="_blank" rel="noopener">Course page</a>
+        </article>
+
+        <!-- 3. Microsoft PL-300 (Planned) -->
         <article class="cert-card">
           <h3>Microsoft Certified: Power BI Data Analyst (PL-300)</h3>
           <p class="issuer">Issuer: Microsoft</p>
-          <p class="meta">Status: Planned</p>
-          <a href="#" class="cert-link" target="_blank" rel="noopener">View credential</a>
+          <p class="meta"><span class="badge pl">Planned</span></p>
+          <a href="https://learn.microsoft.com/credentials/certifications/power-bi-data-analyst-associate/" class="cert-link" target="_blank" rel="noopener">About certification</a>
         </article>
 
+        <!-- 4. SQL Intermediate (Completed) -->
         <article class="cert-card">
           <h3>SQL (Intermediate)</h3>
           <p class="issuer">Issuer: HackerRank</p>
-          <p class="meta">Status: Completed</p>
-          <a href="#" class="cert-link" target="_blank" rel="noopener">View credential</a>
+          <p class="meta"><span class="badge ok">Completed</span></p>
+          <a href="#" class="cert-link">View credential</a>
         </article>
+
+        <!-- 5. Professional Program in Data Science -->
+        <article class="cert-card">
+          <h3>Professional Program in Data Science</h3>
+          <p class="issuer">Issuer: Infinity School</p>
+          <p class="meta"><span class="badge ok">Completed</span></p>
+          <a href="https://www.infinityschool.com.br" class="cert-link" target="_blank" rel="noopener">School website</a>
+        </article>
+
+        <!-- 6. Python Course (56h) -->
+        <article class="cert-card">
+          <h3>Python Course (56h)</h3>
+          <p class="issuer">Issuer: Infinity School</p>
+          <p class="meta"><span class="badge ok">Completed</span></p>
+          <a href="https://www.infinityschool.com.br" class="cert-link" target="_blank" rel="noopener">School website</a>
+        </article>
+
+        <!-- 7. MySQL Course (24h) -->
+        <article class="cert-card">
+          <h3>MySQL Course (24h)</h3>
+          <p class="issuer">Issuer: Infinity School</p>
+          <p class="meta"><span class="badge ok">Completed</span></p>
+          <a href="https://www.infinityschool.com.br" class="cert-link" target="_blank" rel="noopener">School website</a>
+        </article>
+
+        <!-- 8. Power Query (Alura) -->
+        <article class="cert-card">
+          <h3>Power Query Course</h3>
+          <p class="issuer">Issuer: Alura</p>
+          <p class="meta"><span class="badge ok">Completed</span></p>
+          <a href="https://www.alura.com.br/" class="cert-link" target="_blank" rel="noopener">School website</a>
+        </article>
+
+        <!-- 9. Power BI Training (Basic → Advanced) -->
+        <article class="cert-card">
+          <h3>Power BI Training (Basic to Advanced)</h3>
+          <p class="issuer">Issuers: Alura & Infinity School</p>
+          <p class="meta"><span class="badge ok">Completed</span></p>
+          <a href="https://www.alura.com.br/" class="cert-link" target="_blank" rel="noopener">Program</a>
+        </article>
+
+        <!-- 10. Advanced Excel -->
+        <article class="cert-card">
+          <h3>Advanced Excel</h3>
+          <p class="issuer">Issuer: Udemy</p>
+          <p class="meta"><span class="badge ok">Completed</span></p>
+          <a href="https://www.udemy.com" class="cert-link" target="_blank" rel="noopener">Course page</a>
+        </article>
+
+        <!-- 11. MITx / edX – Becoming an Entrepreneur -->
+        <article class="cert-card">
+          <h3>MITx / edX: Becoming an Entrepreneur</h3>
+          <p class="issuer">Issuer: Massachusetts Institute of Technology (MITx / edX)</p>
+          <p class="meta"><span class="badge ok">Completed</span></p>
+          <a href="https://www.edx.org/" class="cert-link" target="_blank" rel="noopener">Course page</a>
+        </article>
+
       </div>
     </section>
 
@@ -266,29 +346,29 @@
           <button class="filter-btn" data-filter="sql" role="tab">SQL</button>
         </div>
         <div class="grid" id="portfolioGrid">
-          <a class="card project" data-tags="powerbi" href="#" target="_blank" rel="noopener">
+          <a class="card project" data-tags="powerbi" href="https://github.com/yourusername/sales-dashboard" target="_blank" rel="noopener">
             <h4>Sales Performance Dashboard</h4>
             <p>Power BI dashboard with automated refresh, KPI tracking and cohort analysis.</p>
             <span class="chip">Power BI</span>
           </a>
-          <a class="card project" data-tags="python" href="#" target="_blank" rel="noopener">
+          <a class="card project" data-tags="python" href="https://github.com/yourusername/churn-analysis" target="_blank" rel="noopener">
             <h4>Customer Churn Analysis</h4>
             <p>Exploratory data analysis and predictive modeling to identify churn drivers.</p>
             <span class="chip">Python</span>
             <span class="chip">Pandas</span>
           </a>
-          <a class="card project" data-tags="sql" href="#" target="_blank" rel="noopener">
+          <a class="card project" data-tags="sql" href="https://github.com/yourusername/inventory-control" target="_blank" rel="noopener">
             <h4>Inventory Control System</h4>
             <p>Database-backed inventory tracking with data model, ETL and monitoring views.</p>
             <span class="chip">SQL</span>
             <span class="chip">Data Modeling</span>
           </a>
-          <a class="card project" data-tags="powerbi" href="#" target="_blank" rel="noopener">
+          <a class="card project" data-tags="powerbi" href="https://github.com/yourusername/marketing-funnel" target="_blank" rel="noopener">
             <h4>Marketing Funnel Insights</h4>
             <p>Interactive funnel with segmentation, retention and LTV breakdown.</p>
             <span class="chip">Power BI</span>
           </a>
-          <a class="card project" data-tags="python" href="#" target="_blank" rel="noopener">
+          <a class="card project" data-tags="python" href="https://github.com/yourusername/nlp-reviews" target="_blank" rel="noopener">
             <h4>Product Reviews NLP</h4>
             <p>Text preprocessing, sentiment analysis and topic modeling for CX insights.</p>
             <span class="chip">Python</span>
@@ -313,16 +393,16 @@
   </main>
 
   <script>
-    // Keep page at top on load
+    // manter no topo ao carregar
     try{
       if('scrollRestoration' in history){ history.scrollRestoration='manual'; }
       if(location.hash){ history.replaceState(null,'',location.pathname); }
     }catch(e){}
 
-    // Year in footer
+    // footer year
     document.getElementById('year').textContent = new Date().getFullYear();
 
-    // Portfolio filter
+    // filtros do portfólio
     const buttons = document.querySelectorAll('.filter-btn');
     const cards = document.querySelectorAll('#portfolioGrid .project');
     buttons.forEach(btn => btn.addEventListener('click', () => {
@@ -336,7 +416,7 @@
       });
     }));
 
-    // Drawer behavior
+    // drawer
     const fab = document.querySelector('.fab');
     const drawer = document.getElementById('drawer');
     const closeBtn = drawer.querySelector('.close');
@@ -348,19 +428,9 @@
       drawer.setAttribute('aria-hidden', String(!isOpen));
       document.body.style.overflow = isOpen ? 'hidden' : '';
     }
-
     fab.addEventListener('click', () => toggleDrawer());
     closeBtn.addEventListener('click', () => toggleDrawer(false));
     drawer.addEventListener('click', (e)=>{ if(e.target === drawer) toggleDrawer(false); });
-
-    // Ripple: define coordenadas do clique para a animação nos botões
-    document.querySelectorAll('.btn').forEach(btn=>{
-      btn.addEventListener('pointerdown', e=>{
-        const rect = btn.getBoundingClientRect();
-        btn.style.setProperty('--x', `${e.clientX - rect.left}px`);
-        btn.style.setProperty('--y', `${e.clientY - rect.top}px`);
-      });
-    });
   </script>
 </body>
 </html>
