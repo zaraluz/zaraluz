@@ -14,18 +14,18 @@
   <style>
     :root{
       /* Bordô escuro → Rosa queimado claro → Off-white */
-      --bg-1:#4B1C1C;
-      --bg-2:#C79285;
-      --bg-3:#F8F5F0;
+      --bg-1:#4B1C1C;  /* bordô escuro fechado */
+      --bg-2:#C79285;  /* rosa queimado claro */
+      --bg-3:#F8F5F0;  /* off-white suave */
 
-      --off:#F8F5F0;
-      --ink:#2A1A1A;
+      --off:#F8F5F0;   /* texto claro sobre o gradiente */
+      --ink:#2A1A1A;   /* texto escuro para cartões claros */
 
-      --brand:#4B1C1C;
-      --brand-soft:#C79285;
+      --brand:#4B1C1C;       /* cor de marca */
+      --brand-soft:#C79285;  /* tom secundário quente */
 
       --card:#ffffff;
-      --muted:#6d5f64;
+      --muted:#6d5f64; /* cinza quente */
       --radius:20px;
       --shadow:0 20px 40px rgba(0,0,0,.10);
       --border:rgba(75,28,28,.12);
@@ -65,47 +65,41 @@
     .subtitle{font-size:18px;color:rgba(248,245,240,.92);margin:14px 0;max-width:58ch}
     .cta{margin-top:22px;display:flex;gap:12px;flex-wrap:wrap}
 
-    /* ===== Buttons (com sombra + animação iguais) ===== */
+    /* === Botões com sombra + animação (padrão unificado) === */
     .btn{
-      --btn-bg: rgba(248,245,240,.95);
-      --btn-text:#5a2a2f;
-      --btn-border: transparent;
-
-      padding:12px 18px;
+      position:relative;
+      padding:14px 22px;
       border-radius:14px;
-      border:1px solid var(--btn-border);
-      background:var(--btn-bg);
-      color:var(--btn-text);
+      border:1px solid rgba(248,245,240,.2);
+      background:var(--off);
+      color:#5a2a2f;
       font-weight:700;
-      box-shadow:0 12px 28px rgba(112,38,50,.18);
-      transform:translateY(0);
-      transition:transform .18s ease, box-shadow .18s ease, background .18s ease, color .18s ease, border-color .18s ease;
+      box-shadow:0 10px 25px rgba(0,0,0,.12), 0 2px 0 rgba(90,42,47,.20) inset;
+      transition:transform .12s ease, box-shadow .2s ease, background .2s ease, color .2s ease;
+      will-change:transform,box-shadow,background,color;
     }
     .btn:hover{
       transform:translateY(-2px);
-      box-shadow:0 18px 36px rgba(112,38,50,.26);
-      background:#fff;
+      box-shadow:0 16px 30px rgba(0,0,0,.16), 0 2px 0 rgba(90,42,47,.20) inset;
+      background:#ffffff;
       color:#4B1C1C;
-      border-color:rgba(75,28,28,.22);
     }
-    .btn.primary{ /* o “View Projects” usa o mesmo visual base */
-      --btn-bg: var(--off);
-      --btn-text:#5a2a2f;
+    .btn:active{
+      transform:translateY(0);
+      box-shadow:0 8px 16px rgba(0,0,0,.10), 0 0 0 rgba(0,0,0,0) inset;
     }
-    .btn.outline{
-      --btn-bg: transparent;
-      --btn-text: var(--off);
-      --btn-border: rgba(248,245,240,.45);
+    .btn--ghost{
+      background:transparent;
+      color:var(--off);
+      border:1px solid rgba(248,245,240,.5);
       box-shadow:none;
     }
-    .btn.outline:hover{
-      --btn-bg: rgba(248,245,240,.10);
-      --btn-text: var(--off);
-      --btn-border: rgba(248,245,240,.65);
-      box-shadow:none;
+    .btn--ghost:hover{
+      background:rgba(248,245,240,.10);
+      color:#fff;
     }
 
-    /* Photo “blob” (círculo orgânico) */
+    /* Photo only circle (no rectangle) */
     .photo-wrap{display:flex;align-items:center;justify-content:center;position:relative}
     .avatar{
       position:relative;width:min(620px,56vw);aspect-ratio:1;overflow:hidden;border:none;
@@ -128,19 +122,18 @@
 
     /* ====== Certifications ====== */
     .cert-grid{display:grid;gap:16px;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));margin-top:8px}
-    .cert-card{background:var(--card);border:1px solid var(--border);border-radius:var(--radius);padding:18px;box-shadow:var(--shadow);color:var(--ink);display:flex;flex-direction:column;gap:8px}
-    .cert-card h3{margin:0 0 6px 0;line-height:1.25;color:var(--ink);text-indent:0} /* fix h3 "pra dentro" */
-    .cert-card .issuer{margin:0;color:var(--muted);font-size:13px}
-    .cert-card .meta{margin:0 0 8px;color:var(--muted);font-size:13px}
-
-    /* badges de status */
-    .badge{display:inline-block;padding:4px 10px;border-radius:999px;font-size:12px;font-weight:700}
-    .badge.ip{background:#fff5d6;color:#8a5b00;border:1px solid #f2d592}     /* In progress */
-    .badge.pl{background:#f3e8ff;color:#5b21b6;border:1px solid #e0d0ff}     /* Planned */
-    .badge.ok{background:#e9fbe8;color:#166534;border:1px solid #c9f1c7}     /* Completed */
-
-    .cert-link{align-self:flex-start;display:inline-block;font-weight:700;color:var(--brand);border:1px solid rgba(75,28,28,.2);padding:8px 12px;border-radius:10px;background:#fff}
+    .cert-card{background:var(--card);border:1px solid var(--border);border-radius:var(--radius);padding:18px;box-shadow:var(--shadow);color:var(--ink)}
+    .cert-card h3{font-size:16px;line-height:1.25;margin:0 0 8px;color:var(--ink)}
+    .cert-card .issuer{margin:0 0 6px;color:var(--muted);font-size:13px}
+    .cert-card .meta{margin:0 0 12px;color:var(--muted);font-size:13px}
+    .cert-link{display:inline-block;font-weight:700;color:var(--brand);border:1px solid rgba(75,28,28,.2);padding:8px 12px;border-radius:10px;background:#fff}
     .cert-link:hover{background:var(--brand);color:#fff;border-color:var(--brand)}
+
+    /* Badges de status */
+    .badge{display:inline-block;padding:6px 10px;border-radius:999px;font-size:12px;font-weight:700;border:1px solid transparent}
+    .badge.ip{background:#fdf2df;color:#8a5b00;border-color:#f1dfbb}
+    .badge.pl{background:#efe4ff;color:#522c88;border-color:#e0d0ff}
+    .badge.ok{background:#e6f6ea;color:#176c3a;border-color:#c9e9d4}
 
     /* ====== Portfolio ====== */
     .filters{display:flex;gap:10px;flex-wrap:wrap;margin-bottom:14px}
@@ -164,6 +157,7 @@
     }
 
     @keyframes gentleZoom{0%{opacity:.0;transform:scale(.96)}100%{opacity:1;transform:scale(1)}}
+    @keyframes breathe{0%{transform:scale(1)}50%{transform:scale(1.01)}100%{transform:scale(1)}}
     @keyframes blob{
       0%{border-radius:45% 55% 60% 40% / 40% 35% 65% 60%;transform:translateY(0) scale(1)}
       33%{border-radius:55% 45% 38% 62% / 48% 60% 40% 52%;transform:translateY(-6px) scale(1.01)}
@@ -173,7 +167,7 @@
   </style>
 </head>
 <body>
-  <!-- Floating only-menu button -->
+  <!-- Floating only-menu button (no white bar, no name) -->
   <button class="fab" aria-label="Open menu" aria-controls="drawer" aria-expanded="false"><span></span></button>
 
   <!-- Slide-in Drawer -->
@@ -199,9 +193,9 @@
         <h1 class="name">👋 Hi, I'm Zara Louise Luz!</h1>
         <p class="subtitle"><strong>Turning data into clear, actionable insights.</strong> Business Administration background → BI & DS. I build dashboards, automate data flows, and design data models that support smart decisions.</p>
         <div class="cta">
-          <a class="btn primary" href="#projects">View Projects</a>
+          <a class="btn" href="#projects">View Projects</a>
           <a class="btn" href="ZaraLouiseCV.pdf" download>Download CV</a>
-          <a class="btn outline" href="#tech">Tools</a>
+          <a class="btn btn--ghost" href="#tech">Tools</a>
           <a class="btn" href="#certifications">Certifications</a>
         </div>
       </div>
@@ -238,99 +232,104 @@
     </section>
 
     <!-- ====== Certifications ====== -->
-    <section id="certifications" class="section card">
-      <div class="section-title">Certifications</div>
+    <section id="certifications">
+      <h3 class="section-title">Certifications</h3>
 
-      <div class="cert-grid">
+      <!-- Conteúdo dentro de um cartão para ficar igual ao Tech -->
+      <div class="card">
+        <div class="cert-grid">
 
-        <!-- 1. Google Advanced Data Analytics (In progress) -->
-        <article class="cert-card">
-          <h3>Google Advanced Data Analytics (Professional Certificate)</h3>
-          <p class="issuer">Issuer: Google / Coursera</p>
-          <p class="meta"><span class="badge ip">In progress</span></p>
-          <a href="https://www.coursera.org/professional-certificates/google-advanced-data-analytics" class="cert-link" target="_blank" rel="noopener">View credential</a>
-        </article>
+          <!-- 1. Google Advanced DA (In progress) -->
+          <article class="cert-card">
+            <h3>Google Advanced Data Analytics (Professional Certificate)</h3>
+            <p class="issuer">Issuer: Google / Coursera</p>
+            <p class="meta"><span class="badge ip">In progress</span></p>
+            <a href="https://www.coursera.org/professional-certificates/google-advanced-data-analytics"
+               class="cert-link" target="_blank" rel="noopener">View credential</a>
+          </article>
 
-        <!-- 2. Apache Airflow (In progress) -->
-        <article class="cert-card">
-          <h3>Apache Airflow</h3>
-          <p class="issuer">Issuer: Udemy</p>
-          <p class="meta"><span class="badge ip">In progress</span></p>
-          <a href="https://www.udemy.com" class="cert-link" target="_blank" rel="noopener">Course page</a>
-        </article>
+          <!-- 2. Apache Airflow (In progress) -->
+          <article class="cert-card">
+            <h3>Apache Airflow</h3>
+            <p class="issuer">Issuer: Udemy</p>
+            <p class="meta"><span class="badge ip">In progress</span></p>
+            <a href="https://www.udemy.com" class="cert-link" target="_blank" rel="noopener">Course page</a>
+          </article>
 
-        <!-- 3. Microsoft PL-300 (Planned) -->
-        <article class="cert-card">
-          <h3>Microsoft Certified: Power BI Data Analyst (PL-300)</h3>
-          <p class="issuer">Issuer: Microsoft</p>
-          <p class="meta"><span class="badge pl">Planned</span></p>
-          <a href="https://learn.microsoft.com/credentials/certifications/power-bi-data-analyst-associate/" class="cert-link" target="_blank" rel="noopener">About certification</a>
-        </article>
+          <!-- 3. Microsoft PL-300 (Planned) -->
+          <article class="cert-card">
+            <h3>Microsoft Certified: Power BI Data Analyst (PL-300)</h3>
+            <p class="issuer">Issuer: Microsoft</p>
+            <p class="meta"><span class="badge pl">Planned</span></p>
+            <a href="https://learn.microsoft.com/credentials/certifications/power-bi-data-analyst-associate/"
+               class="cert-link" target="_blank" rel="noopener">About certification</a>
+          </article>
 
-        <!-- 4. SQL Intermediate (Completed) -->
-        <article class="cert-card">
-          <h3>SQL (Intermediate)</h3>
-          <p class="issuer">Issuer: HackerRank</p>
-          <p class="meta"><span class="badge ok">Completed</span></p>
-          <a href="#" class="cert-link">View credential</a>
-        </article>
+          <!-- 4. SQL Intermediate (Completed) -->
+          <article class="cert-card">
+            <h3>SQL (Intermediate)</h3>
+            <p class="issuer">Issuer: HackerRank</p>
+            <p class="meta"><span class="badge ok">Completed</span></p>
+            <a href="#" class="cert-link">View credential</a>
+          </article>
 
-        <!-- 5. Professional Program in Data Science -->
-        <article class="cert-card">
-          <h3>Professional Program in Data Science</h3>
-          <p class="issuer">Issuer: Infinity School</p>
-          <p class="meta"><span class="badge ok">Completed</span></p>
-          <a href="https://www.infinityschool.com.br" class="cert-link" target="_blank" rel="noopener">School website</a>
-        </article>
+          <!-- 5. Professional Program in Data Science (112h) -->
+          <article class="cert-card">
+            <h3>Professional Program in Data Science (112h)</h3>
+            <p class="issuer">Issuer: Infinity School</p>
+            <p class="meta"><span class="badge ok">Completed</span></p>
+            <a href="https://www.infinityschool.com.br" class="cert-link" target="_blank" rel="noopener">School website</a>
+          </article>
 
-        <!-- 6. Python Course (56h) -->
-        <article class="cert-card">
-          <h3>Python Course (56h)</h3>
-          <p class="issuer">Issuer: Infinity School</p>
-          <p class="meta"><span class="badge ok">Completed</span></p>
-          <a href="https://www.infinityschool.com.br" class="cert-link" target="_blank" rel="noopener">School website</a>
-        </article>
+          <!-- 6. Python Course (56h) -->
+          <article class="cert-card">
+            <h3>Python Course (56h)</h3>
+            <p class="issuer">Issuer: Infinity School</p>
+            <p class="meta"><span class="badge ok">Completed</span></p>
+            <a href="https://www.infinityschool.com.br" class="cert-link" target="_blank" rel="noopener">School website</a>
+          </article>
 
-        <!-- 7. MySQL Course (24h) -->
-        <article class="cert-card">
-          <h3>MySQL Course (24h)</h3>
-          <p class="issuer">Issuer: Infinity School</p>
-          <p class="meta"><span class="badge ok">Completed</span></p>
-          <a href="https://www.infinityschool.com.br" class="cert-link" target="_blank" rel="noopener">School website</a>
-        </article>
+          <!-- 7. MySQL Course (24h) -->
+          <article class="cert-card">
+            <h3>MySQL Course (24h)</h3>
+            <p class="issuer">Issuer: Infinity School</p>
+            <p class="meta"><span class="badge ok">Completed</span></p>
+            <a href="https://www.infinityschool.com.br" class="cert-link" target="_blank" rel="noopener">School website</a>
+          </article>
 
-        <!-- 8. Power Query (Alura) -->
-        <article class="cert-card">
-          <h3>Power Query Course</h3>
-          <p class="issuer">Issuer: Alura</p>
-          <p class="meta"><span class="badge ok">Completed</span></p>
-          <a href="https://www.alura.com.br/" class="cert-link" target="_blank" rel="noopener">School website</a>
-        </article>
+          <!-- 8. Power Query (Alura) -->
+          <article class="cert-card">
+            <h3>Power Query Course</h3>
+            <p class="issuer">Issuer: Alura</p>
+            <p class="meta"><span class="badge ok">Completed</span></p>
+            <a href="https://www.alura.com.br/" class="cert-link" target="_blank" rel="noopener">School website</a>
+          </article>
 
-        <!-- 9. Power BI Training (Basic → Advanced) -->
-        <article class="cert-card">
-          <h3>Power BI Training (Basic to Advanced)</h3>
-          <p class="issuer">Issuers: Alura & Infinity School</p>
-          <p class="meta"><span class="badge ok">Completed</span></p>
-          <a href="https://www.alura.com.br/" class="cert-link" target="_blank" rel="noopener">Program</a>
-        </article>
+          <!-- 9. Power BI Training (Basic to Advanced) -->
+          <article class="cert-card">
+            <h3>Power BI Training (Basic to Advanced)</h3>
+            <p class="issuer">Issuers: Alura & Infinity School</p>
+            <p class="meta"><span class="badge ok">Completed</span></p>
+            <a href="https://www.alura.com.br/" class="cert-link" target="_blank" rel="noopener">Program</a>
+          </article>
 
-        <!-- 10. Advanced Excel -->
-        <article class="cert-card">
-          <h3>Advanced Excel</h3>
-          <p class="issuer">Issuer: Udemy</p>
-          <p class="meta"><span class="badge ok">Completed</span></p>
-          <a href="https://www.udemy.com" class="cert-link" target="_blank" rel="noopener">Course page</a>
-        </article>
+          <!-- 10. Advanced Excel -->
+          <article class="cert-card">
+            <h3>Advanced Excel</h3>
+            <p class="issuer">Issuer: Udemy</p>
+            <p class="meta"><span class="badge ok">Completed</span></p>
+            <a href="https://www.udemy.com" class="cert-link" target="_blank" rel="noopener">Course page</a>
+          </article>
 
-        <!-- 11. MITx / edX – Becoming an Entrepreneur -->
-        <article class="cert-card">
-          <h3>MITx / edX: Becoming an Entrepreneur</h3>
-          <p class="issuer">Issuer: Massachusetts Institute of Technology (MITx / edX)</p>
-          <p class="meta"><span class="badge ok">Completed</span></p>
-          <a href="https://www.edx.org/" class="cert-link" target="_blank" rel="noopener">Course page</a>
-        </article>
+          <!-- 11. MITx / edX – Becoming an Entrepreneur -->
+          <article class="cert-card">
+            <h3>MITx / edX: Becoming an Entrepreneur</h3>
+            <p class="issuer">Issuer: Massachusetts Institute of Technology (MITx / edX)</p>
+            <p class="meta"><span class="badge ok">Completed</span></p>
+            <a href="https://www.edx.org/" class="cert-link" target="_blank" rel="noopener">Course page</a>
+          </article>
 
+        </div>
       </div>
     </section>
 
@@ -393,16 +392,16 @@
   </main>
 
   <script>
-    // manter no topo ao carregar
+    // Keep page at top on load
     try{
       if('scrollRestoration' in history){ history.scrollRestoration='manual'; }
       if(location.hash){ history.replaceState(null,'',location.pathname); }
     }catch(e){}
 
-    // footer year
+    // Year in footer
     document.getElementById('year').textContent = new Date().getFullYear();
 
-    // filtros do portfólio
+    // Portfolio filter
     const buttons = document.querySelectorAll('.filter-btn');
     const cards = document.querySelectorAll('#portfolioGrid .project');
     buttons.forEach(btn => btn.addEventListener('click', () => {
@@ -416,7 +415,7 @@
       });
     }));
 
-    // drawer
+    // Drawer behavior
     const fab = document.querySelector('.fab');
     const drawer = document.getElementById('drawer');
     const closeBtn = drawer.querySelector('.close');
@@ -428,6 +427,7 @@
       drawer.setAttribute('aria-hidden', String(!isOpen));
       document.body.style.overflow = isOpen ? 'hidden' : '';
     }
+
     fab.addEventListener('click', () => toggleDrawer());
     closeBtn.addEventListener('click', () => toggleDrawer(false));
     drawer.addEventListener('click', (e)=>{ if(e.target === drawer) toggleDrawer(false); });
