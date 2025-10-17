@@ -9,23 +9,23 @@
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Zara Louise Luz | Data Analyst</title>
   <meta name="description" content="Portfolio of Zara Louise – Data Analytics & Data Science" />
+
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Bebas+Neue&display=swap" rel="stylesheet">
+
   <style>
     :root{
       /* Bordô escuro → Rosa queimado claro → Off-white */
-      --bg-1:#4B1C1C;  /* bordô escuro fechado */
-      --bg-2:#C79285;  /* rosa queimado claro */
-      --bg-3:#F8F5F0;  /* off-white suave */
+      --bg-1:#4B1C1C;
+      --bg-2:#C79285;
+      --bg-3:#F8F5F0;
 
-      --off:#F8F5F0;   /* texto claro sobre o gradiente */
-      --ink:#2A1A1A;   /* texto escuro para cartões claros */
+      --off:#F8F5F0;   /* texto claro */
+      --ink:#2A1A1A;   /* texto escuro */
 
-      --brand:#4B1C1C;       /* cor de marca */
-      --brand-soft:#C79285;  /* tom secundário quente */
-
+      --brand:#4B1C1C;
       --card:#ffffff;
-      --muted:#6d5f64; /* cinza quente */
+      --muted:#6d5f64;
       --radius:20px;
       --shadow:0 20px 40px rgba(0,0,0,.10);
       --border:rgba(75,28,28,.12);
@@ -37,21 +37,19 @@
       background:linear-gradient(180deg,var(--bg-1) 0%, var(--bg-2) 55%, var(--bg-3) 100%);
       color:var(--off);
       font-family:'Poppins',system-ui,Segoe UI,Roboto,Arial,sans-serif;
-      scroll-behavior:smooth
+      scroll-behavior:smooth;
     }
     a{color:inherit;text-decoration:none}
     img{max-width:100%;display:block}
-
     .container{max-width:1100px;margin:0 auto;padding:0 20px}
 
-    /* ====== Floating Hamburger (no top bar) ====== */
+    /* ===== Botão flutuante do menu ===== */
     .fab{position:fixed;top:18px;right:18px;z-index:90;width:44px;height:44px;border-radius:999px;background:#ffffff;border:1px solid var(--border);display:flex;align-items:center;justify-content:center;box-shadow:0 10px 20px rgba(0,0,0,.08)}
     .fab span{position:relative;width:18px;height:2px;background:#2a2144;display:block}
     .fab span::before,.fab span::after{content:"";position:absolute;left:0;width:18px;height:2px;background:#2a2144;transition:.2s}
     .fab span::before{top:-6px}
     .fab span::after{top:6px}
 
-    /* Drawer */
     .drawer{position:fixed;inset:0 0 0 auto;width:min(620px,56vw);background:#ffffff;transform:translateX(100%);transition:.25s ease;box-shadow:-20px 0 60px rgba(0,0,0,.14);z-index:95}
     .drawer.open{transform:none}
     .drawer header{display:flex;align-items:center;justify-content:space-between;padding:16px 22px;border-bottom:1px solid var(--border)}
@@ -59,13 +57,13 @@
     .drawer nav{padding:18px 26px}
     .drawer nav a{display:block;padding:14px 0;font-weight:700;color:#2a2144}
 
-    /* ====== Hero ====== */
+    /* ===== Hero ===== */
     .hero{display:grid;grid-template-columns:1.15fr 1fr;gap:36px;align-items:center;padding:96px 0 44px}
-    .name{font-family:'Bebas Neue',system-ui,sans-serif;font-size:clamp(40px,6.5vw,68px);line-height:.95;letter-spacing:.5px;margin:0 0 10px;text-transform:none;color:var(--off);max-width:16ch}
+    .name{font-family:'Bebas Neue',system-ui,sans-serif;font-size:clamp(40px,6.5vw,68px);line-height:.95;margin:0 0 10px;max-width:16ch}
     .subtitle{font-size:18px;color:rgba(248,245,240,.92);margin:14px 0;max-width:58ch}
     .cta{margin-top:22px;display:flex;gap:12px;flex-wrap:wrap}
 
-    /* === Botões com sombra + animação (padrão unificado) === */
+    /* ===== Botões com animação unificada ===== */
     .btn{
       position:relative;
       padding:14px 22px;
@@ -74,32 +72,24 @@
       background:var(--off);
       color:#5a2a2f;
       font-weight:700;
-      box-shadow:0 10px 25px rgba(0,0,0,.12), 0 2px 0 rgba(90,42,47,.20) inset;
-      transition:transform .12s ease, box-shadow .2s ease, background .2s ease, color .2s ease;
-      will-change:transform,box-shadow,background,color;
+      box-shadow:0 10px 25px rgba(112,38,50,.18), 0 1px 0 rgba(255,255,255,.35) inset;
+      transition:transform .18s ease, box-shadow .18s ease, background-color .18s ease, color .18s ease;
     }
     .btn:hover{
       transform:translateY(-2px);
-      box-shadow:0 16px 30px rgba(0,0,0,.16), 0 2px 0 rgba(90,42,47,.20) inset;
-      background:#ffffff;
-      color:#4B1C1C;
+      box-shadow:0 16px 32px rgba(112,38,50,.28), 0 1px 0 rgba(255,255,255,.35) inset;
+      background:#fff; color:#4B1C1C;
     }
-    .btn:active{
-      transform:translateY(0);
-      box-shadow:0 8px 16px rgba(0,0,0,.10), 0 0 0 rgba(0,0,0,0) inset;
-    }
+    .btn:active{transform:translateY(0);box-shadow:0 6px 14px rgba(112,38,50,.20)}
     .btn--ghost{
       background:transparent;
       color:var(--off);
-      border:1px solid rgba(248,245,240,.5);
+      border:1px solid rgba(248,245,240,.45);
       box-shadow:none;
     }
-    .btn--ghost:hover{
-      background:rgba(248,245,240,.10);
-      color:#fff;
-    }
+    .btn--ghost:hover{background:rgba(248,245,240,.10);color:#fff}
 
-    /* Photo only circle (no rectangle) */
+    /* Foto orgânica animada */
     .photo-wrap{display:flex;align-items:center;justify-content:center;position:relative}
     .avatar{
       position:relative;width:min(620px,56vw);aspect-ratio:1;overflow:hidden;border:none;
@@ -109,55 +99,60 @@
       will-change:transform,border-radius;animation: gentleZoom .7s ease-out both, blob 12s ease-in-out 1.2s infinite
     }
 
-    /* ====== Sections ====== */
+    /* ===== Sections / Cards ===== */
     section{padding:46px 0}
     .section-title{font-size:14px;color:var(--brand);letter-spacing:.18em;text-transform:uppercase;margin-bottom:16px;opacity:.95}
     .card{background:var(--card);border:1px solid var(--border);border-radius:var(--radius);padding:22px;box-shadow:var(--shadow);color:var(--ink)}
-
     .about p{color:var(--ink);margin:0 0 14px;opacity:.92}
 
-    /* ====== Tech ====== */
+    /* Chips */
     .chips{display:flex;flex-wrap:wrap;gap:10px}
     .chip{padding:8px 12px;border-radius:999px;border:1px solid rgba(75,28,28,.15);background:rgba(248,245,240,.92);font-size:12px;color:var(--brand)}
 
-    /* ====== Certifications ====== */
+    /* Certifications */
     .cert-grid{display:grid;gap:16px;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));margin-top:8px}
     .cert-card{background:var(--card);border:1px solid var(--border);border-radius:var(--radius);padding:18px;box-shadow:var(--shadow);color:var(--ink)}
     .cert-card h3{font-size:16px;line-height:1.25;margin:0 0 8px;color:var(--ink)}
-    .cert-card .issuer{margin:0 0 6px;color:var(--muted);font-size:13px}
-    .cert-card .meta{margin:0 0 12px;color:var(--muted);font-size:13px}
+    .cert-card .issuer,.cert-card .meta{margin:0 0 6px;color:var(--muted);font-size:13px}
     .cert-link{display:inline-block;font-weight:700;color:var(--brand);border:1px solid rgba(75,28,28,.2);padding:8px 12px;border-radius:10px;background:#fff}
     .cert-link:hover{background:var(--brand);color:#fff;border-color:var(--brand)}
-
-    /* Badges de status */
     .badge{display:inline-block;padding:6px 10px;border-radius:999px;font-size:12px;font-weight:700;border:1px solid transparent}
     .badge.ip{background:#fdf2df;color:#8a5b00;border-color:#f1dfbb}
     .badge.pl{background:#efe4ff;color:#522c88;border-color:#e0d0ff}
     .badge.ok{background:#e6f6ea;color:#176c3a;border-color:#c9e9d4}
 
-    /* ====== Portfolio ====== */
+    /* ===== Portfolio – cards com thumb e overlay ===== */
     .filters{display:flex;gap:10px;flex-wrap:wrap;margin-bottom:14px}
     .filter-btn{padding:10px 14px;border-radius:999px;border:1px solid rgba(75,28,28,.20);background:#fff;font-weight:600;color:var(--brand);cursor:pointer}
     .filter-btn.active, .filter-btn:hover{background:var(--brand);color:#fff;border-color:var(--brand)}
-    .grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
-    .project{display:flex;flex-direction:column;gap:10px}
-    .project h4{margin:0}
-    .project p{color:var(--muted);margin:0}
+
+    .grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:16px}
+
+    .project-card{
+      position:relative;overflow:hidden;border-radius:16px;border:1px solid var(--border);
+      background:#fff;padding:0;box-shadow:var(--shadow);
+    }
+    .project-thumb{
+      position:relative;height:190px;background:#f3f3f3 center/cover no-repeat;
+    }
+    .project-overlay{
+      position:absolute;inset:0;background:linear-gradient(180deg, rgba(0,0,0,.0) 20%, rgba(0,0,0,.45) 100%);
+      color:#fff;display:flex;flex-direction:column;justify-content:flex-end;gap:8px;
+      padding:18px;opacity:0;transition:opacity .22s ease;
+    }
+    .project-card:hover .project-overlay{opacity:1}
+
+    .project-body{padding:16px}
+    .project-body h4{margin:0 0 6px;color:var(--ink)}
+    .project-body p{margin:0;color:var(--muted)}
+    .tag{display:inline-block;margin-top:10px;padding:8px 12px;border-radius:999px;background:#f5efeb;border:1px solid rgba(75,28,28,.15);color:#6b3a3a;font-weight:600;font-size:12px}
 
     footer{padding:30px 0;color:var(--muted)}
 
-    @media (max-width:960px){
-      .hero{grid-template-columns:1fr}
-      .grid{grid-template-columns:1fr 1fr}
-      .name{font-size:64px}
-    }
-    @media (max-width:640px){
-      .grid{grid-template-columns:1fr}
-      .name{font-size:48px}
-    }
+    @media (max-width:960px){ .hero{grid-template-columns:1fr} .name{font-size:64px} }
+    @media (max-width:640px){ .name{font-size:48px} }
 
     @keyframes gentleZoom{0%{opacity:.0;transform:scale(.96)}100%{opacity:1;transform:scale(1)}}
-    @keyframes breathe{0%{transform:scale(1)}50%{transform:scale(1.01)}100%{transform:scale(1)}}
     @keyframes blob{
       0%{border-radius:45% 55% 60% 40% / 40% 35% 65% 60%;transform:translateY(0) scale(1)}
       33%{border-radius:55% 45% 38% 62% / 48% 60% 40% 52%;transform:translateY(-6px) scale(1.01)}
@@ -167,10 +162,10 @@
   </style>
 </head>
 <body>
-  <!-- Floating only-menu button (no white bar, no name) -->
+  <!-- Floating menu button -->
   <button class="fab" aria-label="Open menu" aria-controls="drawer" aria-expanded="false"><span></span></button>
 
-  <!-- Slide-in Drawer -->
+  <!-- Drawer -->
   <aside class="drawer" id="drawer" aria-hidden="true">
     <header>
       <strong>Menu</strong>
@@ -187,7 +182,7 @@
   </aside>
 
   <main id="top" class="container">
-    <!-- ====== Hero ====== -->
+    <!-- ===== Hero ===== -->
     <section class="hero" aria-label="Intro">
       <div>
         <h1 class="name">👋 Hi, I'm Zara Louise Luz!</h1>
@@ -204,7 +199,7 @@
       </div>
     </section>
 
-    <!-- ====== About ====== -->
+    <!-- ===== About ===== -->
     <section id="about" class="about">
       <h3 class="section-title">About</h3>
       <div class="card">
@@ -214,175 +209,154 @@
       </div>
     </section>
 
-    <!-- ====== Tech (Tools) ====== -->
+    <!-- ===== Tech ===== -->
     <section id="tech">
-      <h3 class="section-title">Tech Stack & Tools</h3>
+      <h3 class="section-title">TECH STACK & TOOLS</h3>
       <div class="card chips">
-        <span class="chip">Power BI</span>
-        <span class="chip">Python</span>
-        <span class="chip">Pandas</span>
-        <span class="chip">SQL</span>
-        <span class="chip">MySQL</span>
-        <span class="chip">Apache Airflow</span>
-        <span class="chip">Matplotlib</span>
-        <span class="chip">Seaborn</span>
-        <span class="chip">ETL</span>
+        <span class="chip">Power BI</span><span class="chip">Python</span><span class="chip">Pandas</span>
+        <span class="chip">SQL</span><span class="chip">MySQL</span><span class="chip">Apache Airflow</span>
+        <span class="chip">Matplotlib</span><span class="chip">Seaborn</span><span class="chip">ETL</span>
         <span class="chip">Data Modeling</span>
       </div>
     </section>
 
-    <!-- ====== Certifications ====== -->
+    <!-- ===== Certifications ===== -->
     <section id="certifications">
-      <h3 class="section-title">Certifications</h3>
+      <h3 class="section-title">CERTIFICATIONS</h3>
+      <div class="cert-grid">
+        <article class="cert-card">
+          <h3>Google Advanced Data Analytics (Professional Certificate)</h3>
+          <p class="issuer">Issuer: Google / Coursera</p>
+          <p class="meta"><span class="badge ip">In progress</span></p>
+          <a href="https://www.coursera.org/professional-certificates/google-advanced-data-analytics" class="cert-link" target="_blank" rel="noopener">View credential</a>
+        </article>
 
-      <!-- Conteúdo dentro de um cartão para ficar igual ao Tech -->
-      <div class="card">
-        <div class="cert-grid">
+        <article class="cert-card">
+          <h3>Apache Airflow</h3>
+          <p class="issuer">Issuer: Udemy</p>
+          <p class="meta"><span class="badge ip">In progress</span></p>
+          <a href="https://www.udemy.com/" class="cert-link" target="_blank" rel="noopener">Course page</a>
+        </article>
 
-          <!-- 1. Google Advanced DA (In progress) -->
-          <article class="cert-card">
-            <h3>Google Advanced Data Analytics (Professional Certificate)</h3>
-            <p class="issuer">Issuer: Google / Coursera</p>
-            <p class="meta"><span class="badge ip">In progress</span></p>
-            <a href="https://www.coursera.org/professional-certificates/google-advanced-data-analytics"
-               class="cert-link" target="_blank" rel="noopener">View credential</a>
-          </article>
+        <article class="cert-card">
+          <h3>Microsoft Certified: Power BI Data Analyst (PL-300)</h3>
+          <p class="issuer">Issuer: Microsoft</p>
+          <p class="meta"><span class="badge pl">Planned</span></p>
+          <a href="https://learn.microsoft.com/certifications/power-bi-data-analyst-associate/" class="cert-link" target="_blank" rel="noopener">About certification</a>
+        </article>
 
-          <!-- 2. Apache Airflow (In progress) -->
-          <article class="cert-card">
-            <h3>Apache Airflow</h3>
-            <p class="issuer">Issuer: Udemy</p>
-            <p class="meta"><span class="badge ip">In progress</span></p>
-            <a href="https://www.udemy.com" class="cert-link" target="_blank" rel="noopener">Course page</a>
-          </article>
+        <article class="cert-card">
+          <h3>SQL (Intermediate)</h3>
+          <p class="issuer">Issuer: HackerRank</p>
+          <p class="meta"><span class="badge ok">Completed</span></p>
+          <a href="#" class="cert-link">View credential</a>
+        </article>
 
-          <!-- 3. Microsoft PL-300 (Planned) -->
-          <article class="cert-card">
-            <h3>Microsoft Certified: Power BI Data Analyst (PL-300)</h3>
-            <p class="issuer">Issuer: Microsoft</p>
-            <p class="meta"><span class="badge pl">Planned</span></p>
-            <a href="https://learn.microsoft.com/credentials/certifications/power-bi-data-analyst-associate/"
-               class="cert-link" target="_blank" rel="noopener">About certification</a>
-          </article>
+        <article class="cert-card">
+          <h3>Professional Program in Data Science (112h)</h3>
+          <p class="issuer">Issuer: Infinity School</p>
+          <p class="meta"><span class="badge ok">Completed</span></p>
+          <a href="https://www.infinityschool.com.br" class="cert-link" target="_blank" rel="noopener">School website</a>
+        </article>
 
-          <!-- 4. SQL Intermediate (Completed) -->
-          <article class="cert-card">
-            <h3>SQL (Intermediate)</h3>
-            <p class="issuer">Issuer: HackerRank</p>
-            <p class="meta"><span class="badge ok">Completed</span></p>
-            <a href="#" class="cert-link">View credential</a>
-          </article>
+        <article class="cert-card">
+          <h3>Python Course (56h)</h3>
+          <p class="issuer">Issuer: Infinity School</p>
+          <p class="meta"><span class="badge ok">Completed</span></p>
+          <a href="https://www.infinityschool.com.br" class="cert-link" target="_blank" rel="noopener">School website</a>
+        </article>
 
-          <!-- 5. Professional Program in Data Science (112h) -->
-          <article class="cert-card">
-            <h3>Professional Program in Data Science (112h)</h3>
-            <p class="issuer">Issuer: Infinity School</p>
-            <p class="meta"><span class="badge ok">Completed</span></p>
-            <a href="https://www.infinityschool.com.br" class="cert-link" target="_blank" rel="noopener">School website</a>
-          </article>
+        <article class="cert-card">
+          <h3>MySQL Course (24h)</h3>
+          <p class="issuer">Issuer: Infinity School</p>
+          <p class="meta"><span class="badge ok">Completed</span></p>
+          <a href="https://www.infinityschool.com.br" class="cert-link" target="_blank" rel="noopener">School website</a>
+        </article>
 
-          <!-- 6. Python Course (56h) -->
-          <article class="cert-card">
-            <h3>Python Course (56h)</h3>
-            <p class="issuer">Issuer: Infinity School</p>
-            <p class="meta"><span class="badge ok">Completed</span></p>
-            <a href="https://www.infinityschool.com.br" class="cert-link" target="_blank" rel="noopener">School website</a>
-          </article>
+        <article class="cert-card">
+          <h3>Power Query Course</h3>
+          <p class="issuer">Issuer: Alura</p>
+          <p class="meta"><span class="badge ok">Completed</span></p>
+          <a href="https://www.alura.com.br" class="cert-link" target="_blank" rel="noopener">School website</a>
+        </article>
 
-          <!-- 7. MySQL Course (24h) -->
-          <article class="cert-card">
-            <h3>MySQL Course (24h)</h3>
-            <p class="issuer">Issuer: Infinity School</p>
-            <p class="meta"><span class="badge ok">Completed</span></p>
-            <a href="https://www.infinityschool.com.br" class="cert-link" target="_blank" rel="noopener">School website</a>
-          </article>
+        <article class="cert-card">
+          <h3>Power BI Training (Basic to Advanced)</h3>
+          <p class="issuer">Issuers: Alura & Infinity School</p>
+          <p class="meta"><span class="badge ok">Completed</span></p>
+          <a href="https://www.alura.com.br" class="cert-link" target="_blank" rel="noopener">Program</a>
+        </article>
 
-          <!-- 8. Power Query (Alura) -->
-          <article class="cert-card">
-            <h3>Power Query Course</h3>
-            <p class="issuer">Issuer: Alura</p>
-            <p class="meta"><span class="badge ok">Completed</span></p>
-            <a href="https://www.alura.com.br/" class="cert-link" target="_blank" rel="noopener">School website</a>
-          </article>
+        <article class="cert-card">
+          <h3>Advanced Excel</h3>
+          <p class="issuer">Issuer: Udemy</p>
+          <p class="meta"><span class="badge ok">Completed</span></p>
+          <a href="https://www.udemy.com" class="cert-link" target="_blank" rel="noopener">Course page</a>
+        </article>
 
-          <!-- 9. Power BI Training (Basic to Advanced) -->
-          <article class="cert-card">
-            <h3>Power BI Training (Basic to Advanced)</h3>
-            <p class="issuer">Issuers: Alura & Infinity School</p>
-            <p class="meta"><span class="badge ok">Completed</span></p>
-            <a href="https://www.alura.com.br/" class="cert-link" target="_blank" rel="noopener">Program</a>
-          </article>
-
-          <!-- 10. Advanced Excel -->
-          <article class="cert-card">
-            <h3>Advanced Excel</h3>
-            <p class="issuer">Issuer: Udemy</p>
-            <p class="meta"><span class="badge ok">Completed</span></p>
-            <a href="https://www.udemy.com" class="cert-link" target="_blank" rel="noopener">Course page</a>
-          </article>
-
-          <!-- 11. MITx / edX – Becoming an Entrepreneur -->
-          <article class="cert-card">
-            <h3>MITx / edX: Becoming an Entrepreneur</h3>
-            <p class="issuer">Issuer: Massachusetts Institute of Technology (MITx / edX)</p>
-            <p class="meta"><span class="badge ok">Completed</span></p>
-            <a href="https://www.edx.org/" class="cert-link" target="_blank" rel="noopener">Course page</a>
-          </article>
-
-        </div>
+        <article class="cert-card">
+          <h3>MITx / edX: Becoming an Entrepreneur</h3>
+          <p class="issuer">Issuer: Massachusetts Institute of Technology (MITx / edX)</p>
+          <p class="meta"><span class="badge ok">Completed</span></p>
+          <a href="https://www.edx.org/" class="cert-link" target="_blank" rel="noopener">Course page</a>
+        </article>
       </div>
     </section>
 
-    <!-- ====== Portfolio ====== -->
+    <!-- ===== Portfolio ===== -->
     <section id="projects">
-      <h3 class="section-title">Portfolio</h3>
+      <h3 class="section-title">PORTFOLIO</h3>
       <div class="card">
         <p style="margin-top:0;color:#49445d">Check out some of the case studies I built as a Data Analyst.</p>
+
         <div class="filters" role="tablist" aria-label="Portfolio filters">
           <button class="filter-btn active" data-filter="all" role="tab">All</button>
           <button class="filter-btn" data-filter="powerbi" role="tab">Power BI</button>
           <button class="filter-btn" data-filter="python" role="tab">Python</button>
           <button class="filter-btn" data-filter="sql" role="tab">SQL</button>
         </div>
+
         <div class="grid" id="portfolioGrid">
-          <a class="card project" data-tags="powerbi" href="https://github.com/yourusername/sales-dashboard" target="_blank" rel="noopener">
-            <h4>Sales Performance Dashboard</h4>
-            <p>Power BI dashboard with automated refresh, KPI tracking and cohort analysis.</p>
-            <span class="chip">Power BI</span>
+          <!-- Card com thumbnail + overlay (Pharma) -->
+          <a class="project-card" data-tags="powerbi" href="https://github.com/zaraluz/pharma-sales-dashboard" target="_blank" rel="noopener" aria-label="Open Pharma Sales Dashboard repository">
+            <div class="project-thumb" id="pharmaThumb">
+              <div class="project-overlay">
+                <h4 style="margin:0">Pharma Sales Dashboard</h4>
+                <p style="margin:0;opacity:.95">Interactive Power BI dashboard with refresh, KPIs and cohort analysis.</p>
+              </div>
+            </div>
+            <div class="project-body">
+              <h4>Pharma Sales Dashboard</h4>
+              <p>Sales & operations insights with segmentation and trends.</p>
+              <span class="tag">Power BI</span>
+            </div>
           </a>
-          <a class="card project" data-tags="python" href="https://github.com/yourusername/churn-analysis" target="_blank" rel="noopener">
-            <h4>Customer Churn Analysis</h4>
-            <p>Exploratory data analysis and predictive modeling to identify churn drivers.</p>
-            <span class="chip">Python</span>
-            <span class="chip">Pandas</span>
-          </a>
-          <a class="card project" data-tags="sql" href="https://github.com/yourusername/inventory-control" target="_blank" rel="noopener">
-            <h4>Inventory Control System</h4>
-            <p>Database-backed inventory tracking with data model, ETL and monitoring views.</p>
-            <span class="chip">SQL</span>
-            <span class="chip">Data Modeling</span>
-          </a>
-          <a class="card project" data-tags="powerbi" href="https://github.com/yourusername/marketing-funnel" target="_blank" rel="noopener">
-            <h4>Marketing Funnel Insights</h4>
-            <p>Interactive funnel with segmentation, retention and LTV breakdown.</p>
-            <span class="chip">Power BI</span>
-          </a>
-          <a class="card project" data-tags="python" href="https://github.com/yourusername/nlp-reviews" target="_blank" rel="noopener">
-            <h4>Product Reviews NLP</h4>
-            <p>Text preprocessing, sentiment analysis and topic modeling for CX insights.</p>
-            <span class="chip">Python</span>
+
+          <!-- Outro exemplo (placeholder) -->
+          <a class="project-card" data-tags="powerbi" href="https://github.com/yourusername/marketing-funnel" target="_blank" rel="noopener">
+            <div class="project-thumb" style="background:#ede7e3;">
+              <div class="project-overlay">
+                <h4 style="margin:0">Marketing Funnel Insights</h4>
+                <p style="margin:0;opacity:.95">Segmentation, retention and LTV breakdown.</p>
+              </div>
+            </div>
+            <div class="project-body">
+              <h4>Marketing Funnel Insights</h4>
+              <p>Interactive funnel with segmentation and retention analysis.</p>
+              <span class="tag">Power BI</span>
+            </div>
           </a>
         </div>
       </div>
     </section>
 
-    <!-- ====== Contact ====== -->
+    <!-- ===== Contact ===== -->
     <section id="contact">
-      <h3 class="section-title">Contact</h3>
+      <h3 class="section-title">CONTACT</h3>
       <div class="card" style="display:flex;gap:14px;flex-wrap:wrap">
         <a class="btn" href="mailto:youremail@example.com" aria-label="Email">Email</a>
         <a class="btn" href="https://www.linkedin.com/in/yourlinkedin" target="_blank" rel="noopener" aria-label="LinkedIn">LinkedIn</a>
-        <a class="btn" href="#top" aria-label="Back to top">Back to top ↑</a>
+        <a class="btn btn--ghost" href="#top" aria-label="Back to top">Back to top ↑</a>
       </div>
     </section>
 
@@ -392,18 +366,18 @@
   </main>
 
   <script>
-    // Keep page at top on load
+    // Garantir que comece no topo
     try{
       if('scrollRestoration' in history){ history.scrollRestoration='manual'; }
       if(location.hash){ history.replaceState(null,'',location.pathname); }
     }catch(e){}
 
-    // Year in footer
+    // Ano no footer
     document.getElementById('year').textContent = new Date().getFullYear();
 
-    // Portfolio filter
+    // Filtro do portfólio
     const buttons = document.querySelectorAll('.filter-btn');
-    const cards = document.querySelectorAll('#portfolioGrid .project');
+    const cards = document.querySelectorAll('#portfolioGrid .project-card');
     buttons.forEach(btn => btn.addEventListener('click', () => {
       buttons.forEach(b => b.classList.remove('active'));
       btn.classList.add('active');
@@ -415,11 +389,10 @@
       });
     }));
 
-    // Drawer behavior
+    // Drawer
     const fab = document.querySelector('.fab');
     const drawer = document.getElementById('drawer');
     const closeBtn = drawer.querySelector('.close');
-
     function toggleDrawer(open){
       const isOpen = open ?? !drawer.classList.contains('open');
       drawer.classList.toggle('open', isOpen);
@@ -427,10 +400,19 @@
       drawer.setAttribute('aria-hidden', String(!isOpen));
       document.body.style.overflow = isOpen ? 'hidden' : '';
     }
-
     fab.addEventListener('click', () => toggleDrawer());
     closeBtn.addEventListener('click', () => toggleDrawer(false));
     drawer.addEventListener('click', (e)=>{ if(e.target === drawer) toggleDrawer(false); });
+
+    // ===== THUMB (Opção B): arquivo na raiz =====
+    (function(){
+      const el = document.getElementById('pharmaThumb');
+      if(!el) return;
+      const testImg = new Image();
+      testImg.onload = () => { el.style.backgroundImage = "url('pharma-thumb.jpg')"; };
+      testImg.onerror = () => { el.style.background = '#efe8e4'; el.style.display='flex'; el.style.alignItems='center'; el.style.justifyContent='center'; el.textContent = 'Pharma Sales Dashboard'; };
+      testImg.src = 'pharma-thumb.jpg';
+    })();
   </script>
 </body>
 </html>
