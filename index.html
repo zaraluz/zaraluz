@@ -105,7 +105,9 @@
       position:relative;width:min(620px,56vw);aspect-ratio:1;overflow:hidden;border:none;
       border-radius:45% 55% 60% 40% / 40% 35% 65% 60%;
       box-shadow:0 40px 90px rgba(0,0,0,.18), 0 0 80px rgba(112,38,50,.18);
-      background-image:url('zara.PNG');background-size:cover;background-position:center 28%;
+      /* updated to local path of uploaded image */
+      background-image:url('/mnt/data/9161dcd9-0c26-473d-8074-3b09e2b72722.png');
+      background-size:cover;background-position:center 28%;
       will-change:transform,border-radius;animation: gentleZoom .7s ease-out both, blob 12s ease-in-out 1.2s infinite
     }
 
@@ -349,34 +351,57 @@
           <button class="filter-btn" data-filter="python" role="tab">Python</button>
           <button class="filter-btn" data-filter="sql" role="tab">SQL</button>
         </div>
+
+        <!-- ====== CORRIGIDO: Grid de Projetos com links para seus repositórios (zaraluz) ====== -->
         <div class="grid" id="portfolioGrid">
-          <a class="card project" data-tags="powerbi" href="https://github.com/yourusername/sales-dashboard" target="_blank" rel="noopener">
-            <h4>Sales Performance Dashboard</h4>
-            <p>Power BI dashboard with automated refresh, KPI tracking and cohort analysis.</p>
+
+          <!-- 1. Pharmaceutical Sales Dashboard (Power BI) -->
+          <a class="card project" data-tags="powerbi"
+             href="https://github.com/zaraluz/pharma-sales-dashboard"
+             target="_blank" rel="noopener">
+            <h4>Pharmaceutical Sales Performance Dashboard</h4>
+            <p>Power BI dashboard analyzing distributor activity, regional performance, and sales trends.</p>
             <span class="chip">Power BI</span>
           </a>
-          <a class="card project" data-tags="python" href="https://github.com/yourusername/churn-analysis" target="_blank" rel="noopener">
+
+          <!-- 2. Customer Churn Analysis (Python) -->
+          <a class="card project" data-tags="python"
+             href="https://github.com/zaraluz/churn-analysis"
+             target="_blank" rel="noopener">
             <h4>Customer Churn Analysis</h4>
             <p>Exploratory data analysis and predictive modeling to identify churn drivers.</p>
             <span class="chip">Python</span>
             <span class="chip">Pandas</span>
           </a>
-          <a class="card project" data-tags="sql" href="https://github.com/yourusername/inventory-control" target="_blank" rel="noopener">
+
+          <!-- 3. Inventory Control System (SQL) -->
+          <a class="card project" data-tags="sql"
+             href="https://github.com/zaraluz/inventory-control"
+             target="_blank" rel="noopener">
             <h4>Inventory Control System</h4>
             <p>Database-backed inventory tracking with data model, ETL and monitoring views.</p>
             <span class="chip">SQL</span>
             <span class="chip">Data Modeling</span>
           </a>
-          <a class="card project" data-tags="powerbi" href="https://github.com/yourusername/marketing-funnel" target="_blank" rel="noopener">
+
+          <!-- 4. Marketing Funnel Dashboard (Power BI) -->
+          <a class="card project" data-tags="powerbi"
+             href="https://github.com/zaraluz/marketing-funnel"
+             target="_blank" rel="noopener">
             <h4>Marketing Funnel Insights</h4>
             <p>Interactive funnel with segmentation, retention and LTV breakdown.</p>
             <span class="chip">Power BI</span>
           </a>
-          <a class="card project" data-tags="python" href="https://github.com/yourusername/nlp-reviews" target="_blank" rel="noopener">
+
+          <!-- 5. NLP on Product Reviews (Python) -->
+          <a class="card project" data-tags="python"
+             href="https://github.com/zaraluz/nlp-reviews"
+             target="_blank" rel="noopener">
             <h4>Product Reviews NLP</h4>
             <p>Text preprocessing, sentiment analysis and topic modeling for CX insights.</p>
             <span class="chip">Python</span>
           </a>
+
         </div>
       </div>
     </section>
