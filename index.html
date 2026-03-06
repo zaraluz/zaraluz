@@ -292,45 +292,69 @@
     <section id="projects">
       <h3 class="section-title">Portfolio</h3>
       <div class="card">
-        <p style="margin-top:0;color:#49445d">Check out some of the case studies I built as a Data Analyst.</p>
+        <p style="margin-top:0;color:#49445d">Explore some of the projects I built across analytics, ETL, BI and machine learning.</p>
+
         <div class="filters" role="tablist" aria-label="Portfolio filters">
           <button class="filter-btn active" data-filter="all" role="tab">All</button>
+          <button class="filter-btn" data-filter="etldw" role="tab">ETL+DW</button>
           <button class="filter-btn" data-filter="powerbi" role="tab">Power BI</button>
+          <button class="filter-btn" data-filter="ml" role="tab">Machine Learning</button>
           <button class="filter-btn" data-filter="python" role="tab">Python</button>
-          <button class="filter-btn" data-filter="sql" role="tab">SQL</button>
+          <button class="filter-btn" data-filter="others" role="tab">Others</button>
         </div>
+
         <div class="grid" id="portfolioGrid">
-          <a class="card project" data-tags="powerbi" href="https://github.com/yourusername/sales-dashboard" target="_blank" rel="noopener">
-            <h4>Sales Performance Dashboard</h4>
-            <p>Power BI dashboard with automated refresh, KPI tracking and cohort analysis.</p>
-            <span class="chip">Power BI</span>
+          <a class="card project" data-tags="etldw python others" href="https://github.com/zaraluz/lake-based-data-warehouse-retail" target="_blank" rel="noopener">
+            <h4>Lake-Based Retail Data Warehouse</h4>
+            <p>End-to-end ETL and cloud data warehouse architecture for retail data using Pentaho, AWS S3, Glue and Athena.</p>
+            <span class="chip">ETL/ELT</span>
+            <span class="chip">Data Warehousing</span>
+            <span class="chip">AWS</span>
           </a>
-          <a class="card project" data-tags="python" href="https://github.com/yourusername/churn-analysis" target="_blank" rel="noopener">
-            <h4>Customer Churn Analysis</h4>
-            <p>Exploratory data analysis and predictive modeling to identify churn drivers.</p>
+
+          <a class="card project" data-tags="powerbi" href="#" target="_blank" rel="noopener">
+            <h4>Retail Supermarket Dashboard</h4>
+            <p>Business intelligence dashboard for supermarket operations with KPI monitoring, sales tracking and management insights.</p>
+            <span class="chip">Power BI</span>
+            <span class="chip">DAX</span>
+            <span class="chip">Business KPIs</span>
+          </a>
+
+          <a class="card project" data-tags="powerbi python others" href="#" target="_blank" rel="noopener">
+            <h4>Pharma Sales Analysis</h4>
+            <p>Analytical case study combining data exploration and dashboard storytelling to evaluate sales performance and business trends.</p>
+            <span class="chip">Power BI</span>
+            <span class="chip">Python</span>
+            <span class="chip">EDA</span>
+          </a>
+
+          <a class="card project" data-tags="ml python" href="#" target="_blank" rel="noopener">
+            <h4>Customer Churn Prediction</h4>
+            <p>Machine learning workflow with exploratory analysis, feature evaluation and predictive modeling to identify churn drivers.</p>
+            <span class="chip">Machine Learning</span>
             <span class="chip">Python</span>
             <span class="chip">Pandas</span>
           </a>
-          <a class="card project" data-tags="sql" href="https://github.com/yourusername/inventory-control" target="_blank" rel="noopener">
-            <h4>Inventory Control System</h4>
-            <p>Database-backed inventory tracking with data model, ETL and monitoring views.</p>
-            <span class="chip">SQL</span>
-            <span class="chip">Data Modeling</span>
-          </a>
-          <a class="card project" data-tags="powerbi" href="https://github.com/yourusername/marketing-funnel" target="_blank" rel="noopener">
-            <h4>Marketing Funnel Insights</h4>
-            <p>Interactive funnel with segmentation, retention and LTV breakdown.</p>
-            <span class="chip">Power BI</span>
-          </a>
-          <a class="card project" data-tags="python" href="https://github.com/yourusername/nlp-reviews" target="_blank" rel="noopener">
+
+          <a class="card project" data-tags="ml python" href="#" target="_blank" rel="noopener">
             <h4>Product Reviews NLP</h4>
-            <p>Text preprocessing, sentiment analysis and topic modeling for CX insights.</p>
+            <p>Natural language processing project with text preprocessing, sentiment analysis and topic modeling for customer feedback insights.</p>
+            <span class="chip">NLP</span>
             <span class="chip">Python</span>
+            <span class="chip">Machine Learning</span>
+          </a>
+
+          <a class="card project" data-tags="python others" href="#" target="_blank" rel="noopener">
+            <h4>Inventory Management System</h4>
+            <p>Python-based inventory management project focused on product control, stock movement logic and structured data handling.</p>
+            <span class="chip">Python</span>
+            <span class="chip">OOP</span>
+            <span class="chip">Systems Design</span>
           </a>
         </div>
       </div>
     </section>
-
+    
     <!-- ====== Contact ====== -->
     <section id="contact">
       <h3 class="section-title">Contact</h3>
