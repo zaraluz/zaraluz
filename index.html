@@ -304,58 +304,74 @@
           <button class="filter-btn active" data-filter="all" role="tab">All</button>
           <button class="filter-btn" data-filter="etldw" role="tab">ETL+DW</button>
           <button class="filter-btn" data-filter="powerbi" role="tab">Power BI</button>
-          <button class="filter-btn" data-filter="ml" role="tab">Machine Learning</button>
+          <button class="filter-btn" data-filter="python" role="tab">Python</button>
+          <button class="filter-btn" data-filter="others" role="tab">Others</button>
+        </div>
+    <section id="projects">
+      <h3 class="section-title">Portfolio</h3>
+      <div class="card">
+        <p style="margin-top:0;color:#49445d">Explore some of the projects I built across analytics, ETL, dashboards, and data warehousing.</p>
+
+        <div class="filters" role="tablist" aria-label="Portfolio filters">
+          <button class="filter-btn active" data-filter="all" role="tab">All</button>
+          <button class="filter-btn" data-filter="etldw" role="tab">ETL+DW</button>
+          <button class="filter-btn" data-filter="powerbi" role="tab">Power BI</button>
           <button class="filter-btn" data-filter="python" role="tab">Python</button>
           <button class="filter-btn" data-filter="others" role="tab">Others</button>
         </div>
 
         <div class="grid" id="portfolioGrid">
-          <a class="card project" data-tags="etldw python others" href="https://github.com/zaraluz/lake-based-data-warehouse-retail" target="_blank" rel="noopener">
+          <a class="card project" data-tags="etldw others" href="https://github.com/zaraluz/lake-based-data-warehouse-retail" target="_blank" rel="noopener">
             <h4>Lake-Based Retail Data Warehouse</h4>
-            <p>End-to-end ETL and cloud data warehouse architecture for retail data using Pentaho, AWS S3, Glue and Athena.</p>
-            <span class="chip">ETL/ELT</span>
-            <span class="chip">Data Warehousing</span>
-            <span class="chip">AWS</span>
+            <p>Retail ETL and data warehouse architecture built with Pentaho, AWS S3 and PostgreSQL for scalable analytical workflows.</p>
+            <span class="chip">Pentaho</span>
+            <span class="chip">AWS S3</span>
+            <span class="chip">PostgreSQL</span>
           </a>
 
-          <a class="card project" data-tags="powerbi" href="#" target="_blank" rel="noopener">
+          <a class="card project" data-tags="powerbi others" href="https://github.com/zaraluz/Supermarket-Performance-Dashboard" target="_blank" rel="noopener">
+            <h4>Supermarket Performance Dashboard</h4>
+            <p>Business performance dashboard using Athena, Glue and Power BI to track KPIs and support retail decision-making.</p>
+            <span class="chip">Athena</span>
+            <span class="chip">Glue</span>
+            <span class="chip">Power BI</span>
+          </a>
+
+          <a class="card project" data-tags="powerbi others" href="https://github.com/zaraluz/Retail-Supermarket-Dashboard" target="_blank" rel="noopener">
             <h4>Retail Supermarket Dashboard</h4>
-            <p>Business intelligence dashboard for supermarket operations with KPI monitoring, sales tracking and management insights.</p>
+            <p>Retail dashboard project developed with Athena, Glue and Power BI for operational analysis and business insights.</p>
+            <span class="chip">Athena</span>
+            <span class="chip">Glue</span>
             <span class="chip">Power BI</span>
-            <span class="chip">DAX</span>
-            <span class="chip">Business KPIs</span>
           </a>
 
-          <a class="card project" data-tags="powerbi python others" href="#" target="_blank" rel="noopener">
-            <h4>Pharma Sales Analysis</h4>
-            <p>Analytical case study combining data exploration and dashboard storytelling to evaluate sales performance and business trends.</p>
-            <span class="chip">Power BI</span>
-            <span class="chip">Python</span>
-            <span class="chip">EDA</span>
-          </a>
-
-          <a class="card project" data-tags="ml python" href="#" target="_blank" rel="noopener">
-            <h4>Customer Churn Prediction</h4>
-            <p>Machine learning workflow with exploratory analysis, feature evaluation and predictive modeling to identify churn drivers.</p>
-            <span class="chip">Machine Learning</span>
-            <span class="chip">Python</span>
-            <span class="chip">Pandas</span>
-          </a>
-
-          <a class="card project" data-tags="ml python" href="#" target="_blank" rel="noopener">
-            <h4>Product Reviews NLP</h4>
-            <p>Natural language processing project with text preprocessing, sentiment analysis and topic modeling for customer feedback insights.</p>
-            <span class="chip">NLP</span>
+          <a class="card project" data-tags="python powerbi" href="https://github.com/zaraluz/medical-cost-prediction-ml" target="_blank" rel="noopener">
+            <h4>Medical Cost Prediction</h4>
+            <p>Predictive analytics project combining Python-based machine learning with Power BI for model interpretation and dashboarding.</p>
             <span class="chip">Python</span>
             <span class="chip">Machine Learning</span>
+            <span class="chip">Power BI</span>
           </a>
 
-          <a class="card project" data-tags="python others" href="#" target="_blank" rel="noopener">
-            <h4>Inventory Management System</h4>
-            <p>Python-based inventory management project focused on product control, stock movement logic and structured data handling.</p>
+          <a class="card project" data-tags="powerbi" href="https://github.com/zaraluz/pharma-sales-dashboard" target="_blank" rel="noopener">
+            <h4>Pharma Sales Dashboard</h4>
+            <p>Power BI dashboard focused on sales performance analysis, business trends and visual storytelling.</p>
+            <span class="chip">Power BI</span>
+          </a>
+
+          <a class="card project" data-tags="python others" href="https://github.com/zaraluz/python-analytics-dashboard" target="_blank" rel="noopener">
+            <h4>Python Analytics Dashboard</h4>
+            <p>Interactive analytics dashboard built with Python for data exploration and visual reporting.</p>
             <span class="chip">Python</span>
-            <span class="chip">OOP</span>
-            <span class="chip">Systems Design</span>
+            <span class="chip">Dashboard</span>
+          </a>
+
+          <a class="card project" data-tags="etldw others" href="https://github.com/zaraluz/northwind-etl-data-warehouse" target="_blank" rel="noopener">
+            <h4>Northwind ETL Data Warehouse</h4>
+            <p>Data warehouse and ETL project built with Pentaho and AWS S3, designed for structured analytical consumption.</p>
+            <span class="chip">Pentaho</span>
+            <span class="chip">AWS S3</span>
+            <span class="chip">ETL</span>
           </a>
         </div>
       </div>
