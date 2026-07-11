@@ -200,7 +200,6 @@
 
         <div class="cta">
           <a class="btn" href="#projects">View Projects</a>
-          <a class="btn" href="" download>Download CV</a>
           <a class="btn btn--ghost" href="#tech">Tools</a>
           <a class="btn" href="#certifications">Education & Certifications</a>
         </div>
@@ -214,9 +213,9 @@
     <section id="about" class="about">
       <h3 class="section-title">About me</h3>
       <div class="card">
-        <p>I’m a <strong>Data Analyst</strong> who owns the <strong>full data cycle</strong> — from raw operational systems to executive-ready dashboards. In my current role I structured the data function from the ground up, designing a dimensional <strong>Data Warehouse (Star Schema) on AWS</strong> and automating the <strong>ETL/ELT pipelines</strong> that feed it.</p>
-        <p>My background blends business and engineering: a degree in <strong>Business Administration</strong>, hands-on international experience as a Data Analyst in <strong>Germany</strong> (fully English-speaking environment), and ongoing specialization through an <strong>MBA in Data Science &amp; Analytics</strong> at the University of São Paulo (USP).</p>
-        <p>I work across <strong>SQL</strong>, <strong>Power BI (DAX &amp; data modeling)</strong>, <strong>Python</strong> and <strong>cloud data platforms</strong>, and I’m deepening my expertise in <strong>machine learning</strong> and <strong>big data</strong> — recently building an end-to-end anomaly-detection pipeline on <strong>Databricks</strong>. I care about turning complexity into clarity: reliable pipelines, honest metrics, and analysis that actually drives decisions.</p>
+        <p>I’m an <strong>Analytics Engineer</strong> with 3+ years turning raw operational data into <strong>dbt models</strong>, dimensional <strong>Data Warehouses</strong>, and <strong>Power BI</strong> dashboards that other teams report and make decisions on top of. In my current role I built a company’s data function from scratch — designing a <strong>Star Schema Data Warehouse on AWS</strong> (S3, Glue, Athena) and a <strong>dbt pipeline</strong> (staging → intermediate → marts) with automated tests and generated docs.</p>
+        <p>My background blends business and engineering: a degree in <strong>Business Administration</strong>, hands-on international experience as a Data Analyst in <strong>Germany</strong> (a 100% English-speaking project), and ongoing specialization through an <strong>MBA in Data Science &amp; Analytics</strong> at the University of São Paulo (USP).</p>
+        <p>I work across <strong>SQL</strong>, <strong>dbt</strong>, <strong>Power BI (DAX &amp; data modeling)</strong>, <strong>Python</strong>, <strong>REST API integrations</strong> and cloud data platforms like <strong>AWS</strong> and <strong>Databricks</strong>, and I’m deepening my expertise in <strong>machine learning</strong> and <strong>big data</strong> — recently building end-to-end pipelines for demand forecasting and anomaly detection. I care about turning complexity into clarity: reliable pipelines, honest metrics, and analysis that actually drives decisions.</p>
       </div>
     </section>
 
@@ -227,25 +226,34 @@
         <span class="chip">Power BI</span>
         <span class="chip">DAX</span>
         <span class="chip">Power Query</span>
+        <span class="chip">Row-Level Security (RLS)</span>
+        <span class="chip">SQL</span>
+        <span class="chip">dbt</span>
         <span class="chip">Python</span>
         <span class="chip">Pandas</span>
         <span class="chip">Scikit-learn</span>
-        <span class="chip">SQL</span>
+        <span class="chip">LightGBM</span>
+        <span class="chip">MLflow</span>
+        <span class="chip">Streamlit</span>
         <span class="chip">MySQL</span>
         <span class="chip">PostgreSQL</span>
         <span class="chip">ETL/ELT</span>
+        <span class="chip">REST API Integrations</span>
         <span class="chip">Pentaho</span>
         <span class="chip">AWS S3</span>
         <span class="chip">AWS Glue</span>
         <span class="chip">Amazon Athena</span>
         <span class="chip">Databricks</span>
+        <span class="chip">Delta Lake</span>
         <span class="chip">Apache Spark</span>
-        <span class="chip">MLflow</span>
         <span class="chip">Data Warehousing</span>
         <span class="chip">Dimensional Modeling</span>
         <span class="chip">Star Schema</span>
+        <span class="chip">Data Architecture Design</span>
+        <span class="chip">Data Quality &amp; Governance</span>
         <span class="chip">Machine Learning</span>
-        <span class="chip">Excel</span>
+        <span class="chip">Advanced Excel</span>
+        <span class="chip">Git</span>
         <span class="chip">GitHub</span>
       </div>
     </section>
@@ -304,7 +312,7 @@
         <p style="margin-top:0;color:#49445d">Explore some of the projects I built across analytics, ETL, BI and machine learning.</p>
 
         <div class="filters" role="tablist" aria-label="Portfolio filters">
-          <button class="filter-btn active" data-filter="all" role="tab">All</button>
+          <button class="filter-btn active" data-filter="recent" role="tab">Recent</button>
           <button class="filter-btn" data-filter="de" role="tab">Data Engineering</button>
           <button class="filter-btn" data-filter="ml" role="tab">Machine Learning</button>
           <button class="filter-btn" data-filter="bi" role="tab">Business Intelligence</button>
@@ -312,7 +320,25 @@
         </div>
 
         <div class="grid" id="portfolioGrid">
-          <a class="card project" data-tags="ml de" href="https://github.com/zaraluz/energy-fraud-detection" target="_blank" rel="noopener">
+          <a class="card project" data-tags="de ml recent" href="https://github.com/zaraluz/Retail-Demand-Forecast" target="_blank" rel="noopener">
+            <h4>Retail Demand Forecasting &amp; Stockout Risk</h4>
+            <p>End-to-end Data Engineering + ML pipeline on Databricks (medallion architecture) forecasting product-level demand with LightGBM and flagging stockout risk across a real supermarket chain’s 3.7M+ sales transactions — leak-safe feature engineering, MLflow experiment tracking, and an AI/BI dashboard.</p>
+            <span class="chip">Databricks</span>
+            <span class="chip">PySpark</span>
+            <span class="chip">LightGBM</span>
+            <span class="chip">MLflow</span>
+          </a>
+
+          <a class="card project" data-tags="de sql recent" href="https://github.com/zaraluz/catalog-data-quality" target="_blank" rel="noopener">
+            <h4>Catalog Data Quality Engine</h4>
+            <p>Unsupervised anomaly-detection tool that flags miscategorized products in a retail catalog — a config-driven Python engine reimplemented as a tested, documented dbt pipeline on Athena, plus a Streamlit app for human-in-the-loop review.</p>
+            <span class="chip">dbt</span>
+            <span class="chip">Athena</span>
+            <span class="chip">Python</span>
+            <span class="chip">Streamlit</span>
+          </a>
+
+          <a class="card project" data-tags="ml de recent" href="https://github.com/zaraluz/energy-fraud-detection" target="_blank" rel="noopener">
             <h4>⚡ Energy Fraud &amp; Default Risk Detection</h4>
             <p>End-to-end Big Data pipeline on Databricks detecting consumption anomalies and default risk across 100+ Brazilian electricity distributors — medallion architecture, PCA + Isolation Forest, MLflow tracking.</p>
             <span class="chip">Databricks</span>
@@ -321,7 +347,7 @@
             <span class="chip">Power BI</span>
           </a>
 
-          <a class="card project" data-tags="de" href="https://github.com/zaraluz/lake-based-data-warehouse-retail" target="_blank" rel="noopener">
+          <a class="card project" data-tags="de recent" href="https://github.com/zaraluz/lake-based-data-warehouse-retail" target="_blank" rel="noopener">
             <h4>Lake-Based Retail Data Warehouse</h4>
             <p>Production-oriented retail ETL pipeline and Star Schema warehouse: PostgreSQL ERP → Pentaho → AWS S3 → Glue → Athena → Power BI, with automated daily incremental loads and failure handling.</p>
             <span class="chip">Pentaho</span>
@@ -330,7 +356,7 @@
             <span class="chip">PostgreSQL</span>
           </a>
 
-          <a class="card project" data-tags="bi" href="https://github.com/zaraluz/Supermarket-Performance-Dashboard" target="_blank" rel="noopener">
+          <a class="card project" data-tags="bi recent" href="https://github.com/zaraluz/Supermarket-Performance-Dashboard" target="_blank" rel="noopener">
             <h4>Supermarket Performance Dashboard</h4>
             <p>Retail performance dashboard built on Athena, Glue and Power BI to track sales, margin and KPIs for multi-store decision-making.</p>
             <span class="chip">Athena</span>
@@ -409,16 +435,18 @@
     // Portfolio filter
     const buttons = document.querySelectorAll('.filter-btn');
     const cards = document.querySelectorAll('#portfolioGrid .project');
+    function applyFilter(filter){
+      cards.forEach(card => {
+        const tags = card.dataset.tags.split(' ');
+        card.style.display = tags.includes(filter) ? '' : 'none';
+      });
+    }
     buttons.forEach(btn => btn.addEventListener('click', () => {
       buttons.forEach(b => b.classList.remove('active'));
       btn.classList.add('active');
-      const filter = btn.dataset.filter;
-      cards.forEach(card => {
-        const tags = card.dataset.tags.split(' ');
-        const show = filter === 'all' || tags.includes(filter);
-        card.style.display = show ? '' : 'none';
-      });
+      applyFilter(btn.dataset.filter);
     }));
+    applyFilter('recent');
 
     // Drawer behavior
     const fab = document.querySelector('.fab');
